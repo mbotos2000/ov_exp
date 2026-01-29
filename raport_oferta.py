@@ -13,6 +13,77 @@ from mailmerge import MailMerge
 from difflib import get_close_matches
 import pickle
 import string
+def load_ftp_file():
+    # Establish FTP connection
+    #ftp_server = ftplib.FTP("users.utcluj.ro", st.secrets['u'], st.secrets['p'])
+    ftp_server = ftplib.FTP_TLS("users.utcluj.ro")
+    ftp_server.login(user=st.secrets['u'], passwd=st.secrets['p'])
+    ftp_server.prot_p()
+    ftp_server.encoding = "utf-8"  # Force UTF-8 encoding
+    ftp_server.cwd('./public_html')
+
+    # Download CSV files
+    
+    # Download DOCX templates
+    docx_files = {}
+    for filename in [
+        "template.docx", 
+        "template1.docx", 
+        "template2.docx",
+        "template3.docx"]:
+        file_data = BytesIO()
+        ftp_server.retrbinary(f"RETR {filename}", file_data.write)
+        file_data.seek(0)  # Reset file pointer to the start
+        docx_files[filename] = file_data
+
+    # Close FTP connection
+    ftp_server.quit()
+
+    # Return downloaded files
+    return ( 
+        docx_files["template.docx"], 
+        docx_files["template.docx1.docx"], 
+        docx_files["template.docx2.docx"], 
+        docx_files["template.docx3.docx"]   )
+# Use a session state flag to control cache invalidation
+
+if "refresh_data" not in st.session_state:
+    st.session_state.refresh_data = False
+
+if st.button("🔄 Refresh FTP Data (apasa doar daca nu s-a actualizat baza de date!!!)"):
+    st.session_state.refresh_data = True
+def find_closest_match_index(word, word_list, cutoff=0.6):
+    word = preprocess(word)
+    word_list = [preprocess(w) for w in word_list]
+    
+    closest_matches = get_close_matches(word, word_list, n=1, cutoff=cutoff)
+    if closest_matches:
+        return word_list.index(closest_matches[0])
+    return 0
+	
+def clean_value(value):
+    if pd.isna(value):  # Replaces NaN or None with an empty string
+        return ''
+    elif isinstance(value, bool):  # Convert boolean values to strings
+        return str(value)
+    elif isinstance(value, (int, float, str)):  # Keep numbers and strings as they are
+        return value
+    else:
+        return 'Unknown object'  # Handle unrecognized objects by converting them to a string
+def fix_encoding(text):
+    if isinstance(text, str):
+        try:
+            return text.encode('latin1').decode('utf-8')  # Fix incorrectly decoded text
+        except UnicodeEncodeError:
+            return text  # Return text unchanged if no encoding issues
+    return text  # If it's not a string, return as is
+def get_binary_file_downloader_html(bin_file, file_label='File'):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    bin_str = base64.b64encode(data).decode()
+    href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
+    return href
+
 def format_eu_number(value):
     # Convert input to integer
     n = int(value)
@@ -242,17 +313,9 @@ if st.session_state['file']!=None:
  # Logic AFTER the form
   if submitted:
     st.session_state.step += 1
-
-
-    
-
-  if st.session_state['cap4']!=None:
-    with st.form('capitolul 4'):
-      
-      d_dep='04.09.2022'
-      d_fac='21.09.2022'
-    submitted= st.form_submit_button("finalizeaza")
-    if submitted:
+  template,_,_,_=load_ftp_file()
+  submitted= st.form_submit_button("finalizeaza")
+  if submitted:
        
     
         document = MailMerge(template)
@@ -260,15 +323,9 @@ if st.session_state['file']!=None:
         if key in st.session_state:
                     document.merge(**{key: st.session_state[key]})
         
-        #st.write(st.session_state)
-        file_name=st.session_state['M_1_8']+'_FD_an'+st.session_state['M_2_4']+'_s'+st.session_state['M_2_5']+'_'+pres[st.session_state['M_1_6']]+'_'+st.session_state['M_2_1']+'_24-23.docx'
-        #st.write(st.session_state['M_1_6'])
-       # try:
-        current_datetime = datetime.now()    
         document.write(file_name)
-        st.markdown(get_binary_file_downloader_html(file_name, 'Word document'), unsafe_allow_html=True)
-        st.session_state['denumirefisa']=file_name
-        st.session_state['dataintocmire']=str(current_datetime)
+        st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+
         #os.startfile(file_name)
         
 
