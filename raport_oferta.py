@@ -206,9 +206,9 @@ if "step" not in st.session_state:
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
-for key in ['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere',
-            'nume_contract','ore_et','val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'val_bet','val_geo','nr_dezveliri',
-            'val_et_finisaje','val_rel_struct','val_et_actualizat','termen_predare','termen_val','semnatura']:
+for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","nume_contract","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
+    "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri",
+    "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura"]:
     st.session_state.setdefault(key, '')
 for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']:
     st.session_state.setdefault(key, int(60.0))
