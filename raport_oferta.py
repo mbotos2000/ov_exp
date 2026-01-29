@@ -157,18 +157,20 @@ if st.session_state['file']!=None:
   st.write('{:%d-%b-%Y}'.format(date.today()))
   with st.form('Oferta expertiza'):
     st.header('Inregistrare cerere')
-    submitted = st.form_submit_button("Treceti la alegerea specializarii")
-    if submitted:
+    submitted = st.form_submit_button("Treceti la inregistrarea ofertei")
+  if submitted:
       st.text_area('Numar oferta',key='Nume_contract')
       d_com=st.date_input("Data ofertei",date.today())
       st.session_state['data_contract']=str(d_com)
-      st.session_state['cap2']='1'     
-  if st.session_state['cap2']!=None:
+      st.session_state['cap2']='1'
+      submitted1 = st.form_submit_button("Introdu date despre beneficiar")
+  if st.session_state['cap2']!=None & submitted1:
     with st.form('Date despre beneficiar si cererea depusa:'):
         st.text_area('Beneficiar',key='beneficiar')
         st.text_area('Numar cerere pentru care se face oferta',key='cerere')
         st.session_state['cap2']='2'
-  if st.session_state['cap2']=='2':
+        submitted1 = st.form_submit_button("Introdu date expretiza tehnica")
+  if st.session_state['cap2']=='2' & submitted2:
     with st.form('1. Expretiza tehnica'):
 
         
