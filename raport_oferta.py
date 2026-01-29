@@ -316,7 +316,7 @@ if st.session_state['file']!=None:
         if key in st.session_state:
                     document.merge(**{key: st.session_state[key]})
         
-        document.write(file_name)
+        document.write("oferta.docx")
         st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
 
         #os.startfile(file_name)
