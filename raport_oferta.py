@@ -180,10 +180,11 @@ if st.session_state['file']!=None:
         st.write('Distribuția fondului de timp (ore pe semestru)')
         tosi=st.text_area('Durata maxima de realizare a expertizei',value='60',key='zimax_et')
         st.write('Numai putin de:')
-        slide_zimin_et=st.slider(
-          'Durata de realizare a expertizei tehnice este de maxim ',
-          min_value=1, max_value=int(tosi)-1,value=1)
-    a=st.button('Treci la capitolul 4')
+        st.selectbox(
+            'Select a range number',
+            range(1, int(tosi)-1),key='zimin_et')
+        a=st.form_submit_button("Treci mai departe")
+    #a=st.button('Treci la capitolul 4')
     if a:
       st.write('Capitolul 4')
       schimba_zimax_et(tosi)
