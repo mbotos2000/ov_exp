@@ -174,7 +174,7 @@ if st.session_state['file']!=None:
         st.text_area('Numar cerere pentru care se face oferta',key='cerere')
         st.session_state['cap3']='2'
         submited2=st.form_submit_button("Introdu date expretiza tehnica")
-  if st.session_state['cap3']=='2':
+  if st.session_state['cap3']!=None:
     with st.form('1. Expretiza tehnica'):
         st.text_area('Numar ore necesar verificare',key='ore_et')
         st.text_area('Tarif verificare verificare',key='tarif_et')
@@ -186,10 +186,10 @@ if st.session_state['file']!=None:
         st.selectbox(
             'Nu mai putin de: ',
             range(1, 60),key='zimin_et')
-        st.session_state['cap3']='1'
+        st.session_state['cap4']='1'
         a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
-    if a:
+    if st.session_state['cap4']!=None:
       st.write('Capitolul 4')
       schimba_zimax_et(tosi)
       schimba_zimin_et(slide_zimin_et)
@@ -197,7 +197,7 @@ if st.session_state['file']!=None:
       
       st.session_state['cap4']='1'
     st.form_submit_button("Introdu date expretiza tehnica")
-  if st.session_state['cap3']!=None:
+  if st.session_state['cap4']!=None:
     st.write('Distribuția fondului de timp (ore pe semestru)')
     #st.session_state['M_3_8']=str(data1['orestud'].loc[(data1['specializare']==st.session_state['M_1_6'])&(data1['nume_disciplina']==st.session_state['M_2_1']) & (data1['curs']=='CURS      ')].values[0])
     tosi=38
