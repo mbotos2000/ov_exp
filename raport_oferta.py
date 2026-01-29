@@ -320,7 +320,7 @@ if st.session_state['file']!=None:
 	  for key in keys_to_merge:
                     document.merge(**{key: st.session_state[key]})
 	  document.write("oferta.docx")
-      st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+	  st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
 
         #os.startfile(file_name)
         
