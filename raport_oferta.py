@@ -178,7 +178,7 @@ if st.session_state['file']!=None:
         st.text_area('Tarif verificare verificare',key='tarif_et')
         st.session_state['cap3']='1'
         st.write('Distribuția fondului de timp (ore pe semestru)')
-        tosi=st.text_area('Durata maxima de realizare a expertizei',value='60',key='zimax_et')
+        tosi=st.text_area('Durata maxima de realizare a expertizei',value=60,key='zimax_et')
         st.write('Numai putin de:')
         st.selectbox(
             'Select a range number',
