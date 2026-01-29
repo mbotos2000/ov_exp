@@ -163,13 +163,13 @@ if st.session_state['file']!=None:
       d_com=st.date_input("Data ofertei",date.today())
       st.session_state['data_contract']=str(d_com)
       st.session_state['cap2']='1'
-      submitted1 = st.form_submit_button("Introdu date despre beneficiar")
+      submitted1 = st.button("Introdu date despre beneficiar")
   if st.session_state['cap2']!=None & submitted1:
     with st.form('Date despre beneficiar si cererea depusa:'):
         st.text_area('Beneficiar',key='beneficiar')
         st.text_area('Numar cerere pentru care se face oferta',key='cerere')
         st.session_state['cap2']='2'
-        submitted1 = st.form_submit_button("Introdu date expretiza tehnica")
+        submitted1 = st.button("Introdu date expretiza tehnica")
   if st.session_state['cap2']=='2' & submitted2:
     with st.form('1. Expretiza tehnica'):
 
