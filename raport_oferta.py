@@ -236,9 +236,9 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 beneficiar=st.text_area('Beneficiar',key='beneficiar')
-				schimba_beneficiar(beneficiar)
+                schimba_beneficiar(beneficiar)
                 cerere=st.text_area('Numar cerere pentru care se face oferta',key='cerere')
-				schimba_cerere(cerere)
+                schimba_cerere(cerere)
     if st.session_state.step >= 3:
                 st.write('1. Expertiză tehnică')
                 a=st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
