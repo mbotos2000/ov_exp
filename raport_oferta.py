@@ -283,7 +283,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if st.session_state.step >= 9:	
-	  template=load_ftp_file()
+      template=load_ftp_file()
 
 	  keys_to_merge=['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et',
 					   'val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'val_bet','val_geo','nr_dezveliri',
