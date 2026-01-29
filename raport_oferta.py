@@ -171,15 +171,13 @@ if st.session_state['file']!=None:
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
     if st.session_state.step >= 3:
                 st.write('1. Expertiză tehnică')
-                st.text_area('Valoare expertiza tehnica',value=str(df.iloc[113, 8]), key='ore_et')
+                st.text_area('Valoare expertiza tehnica',value=str(df.iloc[113, 8]), key='val_et')
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare verificare',key='tarif_et')           
-                st.selectbox(
-                    'Durata de realizare a expertizei tehnice: ',
+                st.selectbox('Durata de realizare a expertizei tehnice: ',
                     range(1, 60),key='zimax_et')
                 st.write('Numai putin de:')
-                st.selectbox(
-                    'Nu mai putin de: ',
+                st.selectbox('Nu mai putin de: ',
                     range(1, 60),key='zimin_et')
     #a=st.button('Treci la capitolul 4')
     if st.session_state.step >= 4:
