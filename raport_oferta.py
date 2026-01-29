@@ -13,7 +13,17 @@ from mailmerge import MailMerge
 from difflib import get_close_matches
 import pickle
 import string
+def format_eu_number(value):
+    # Convert input to integer
+    n = int(value)
 
+    # Format using Python's standard formatting
+    formatted = f"{n:,.2f}"
+
+    # Swap separators: , ↔ .
+    formatted = formatted.replace(",", "X").replace(".", ",").replace("X", ".")
+
+    return formatted
 @st.cache_data
 def schimba_val_inc_nd(new):
     st.session_state['val_inc_nd'] = str(new)
@@ -147,8 +157,8 @@ if st.session_state['file']!=None:
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
         st.dataframe(df)
-        schimba_val_ET(df.iloc[113, 8])
-        schimba_val_a_3d(df.iloc[115, 8])
+        schimba_val_ET(format_eu_number(df.iloc[113, 8]))
+        schimba_val_a_3d(format_eu_number(df.iloc[115, 8]))
         schimba_val_a_rel(df.iloc[115, 9])
         schimba_val_inc_nd(df.iloc[115, 8])
         schimba_val_bet(df.iloc[118, 8])
@@ -175,7 +185,7 @@ if st.session_state['file']!=None:
                 st.write('1. Expertiză tehnică')
                 st.text_area('Valoare expertiza tehnica',value=str(df.iloc[113, 8]), key='val_et')
                 st.text_area('Numar ore necesar verificare',key='ore_et')
-                st.text_area('Tarif verificare verificare',key='tarif_et')           
+                st.text_area('Tarif verificare',key='tarif_et')           
                 st.selectbox('Durata de realizare a expertizei tehnice: ',
                     range(1, 60),key='zimax_et')
                 st.write('Numai putin de:')
