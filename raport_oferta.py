@@ -307,8 +307,8 @@ if st.session_state['file']!=None:
   if submitted:
     st.session_state.step += 1
   template=load_ftp_file()
-  submitted= st.form_submit_button("finalizeaza")
-  if submitted:
+  submitted1= st.button("finalizeaza")
+  if submitted1:
        
     
         document = MailMerge(template)
