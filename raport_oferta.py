@@ -152,8 +152,10 @@ if st.session_state['file']!=None:
         schimba_val_a_rel(df.iloc[115, 9])
         schimba_val_inc_nd(df.iloc[115, 8])
         schimba_val_bet(df.iloc[118, 8])
+        schimba_val_geo(df.iloc[119, 8])
         schimba_val_et_actualizat(df.iloc[122, 4])
-        schimba_val_et_finisaje(df.iloc[121,4])
+        schimba_val_et_finisaje(df.iloc[121,8])
+        schimba_val_rel_struct(df.iloc[116,8])
         st.success("Excel loaded")
 
   st.title("Generare oferta")
@@ -182,8 +184,8 @@ if st.session_state['file']!=None:
     #a=st.button('Treci la capitolul 4')
     if st.session_state.step >= 4:
                 st.write('2.Scanare 3D de înaltă precizie a construcției și elaborare releveu arhitectural al acesteia')
-                st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(df.iloc[113, 8]), key='val_a_3d')
-                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(df.iloc[113, 8]), key='val_a_rel')       
+                st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(df.iloc[115, 8]), key='val_a_3d')
+                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(df.iloc[113, 9]), key='val_a_rel')       
                 st.selectbox(
                     'Durata de realizare a releveului: ',
                     range(1, 60),key='zimax_a')
@@ -193,7 +195,7 @@ if st.session_state['file']!=None:
                     range(1, 60),key='zimin_a')
     if st.session_state.step >= 5:
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
-                st.text_area('3. Investigații prin încercări nedistructive : ',value=str(df.iloc[113, 8]), key='val_inc_nd')
+                st.text_area('3. Investigații prin încercări nedistructive : ',value=str(df.iloc[115, 8]), key='val_inc_nd')
                 st.selectbox(
                     'Durata de realizare a releveului: ',
                     range(1, 60), index=25,key='zimax_IND')
@@ -203,7 +205,7 @@ if st.session_state['file']!=None:
                     range(1, 60),index=25,key='zimin_IND')
     if st.session_state.step >= 6:
                 st.write('4.	Teste pe betonul pus în operă prin extragere și testare carote ')
-                st.text_area('4.	Teste pe betonul pus în operă  : ',value=str(df.iloc[113, 8]), key='val_bet')
+                st.text_area('4.	Teste pe betonul pus în operă  : ',value=str(df.iloc[118, 8]), key='val_bet')
     if st.session_state.step >= 7:
                 st.write('5.	Studiu Geotehnic și dezveliri la nivelul fundațiilor')
                 st.text_area(' Studiu Geotehnic : ',value=str(df.iloc[113, 8]), key='val_geo') 
@@ -219,7 +221,7 @@ if st.session_state['file']!=None:
                     'Nu mai putin de: ',
                     range(1, 60),index=25,key='zimin_geo')
     if st.session_state.step >= 8:
-                st.text_area(' Realizare lucrări de decopertare finisaje interioare  : ',value=str(df.iloc[113, 8]), key='val_et_finisaje') 
+                st.text_area(' Realizare lucrări de decopertare finisaje interioare  : ',value=str(df.iloc[122, 8]), key='val_et_finisaje') 
                 st.text_area(' Elaborare releveu structural al construcției   : ',value=str(df.iloc[113, 8]), key='val_rel_struct') 
                 st.text_area(' Actualizare expertiză tehnică   : ',value=str(df.iloc[113, 8]), key='val_et_actualizat') 
   
