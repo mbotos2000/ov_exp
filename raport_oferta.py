@@ -168,7 +168,7 @@ if st.session_state['file']!=None:
           d_com=st.date_input("Data ofertei",date.today())
           st.session_state['data_contract']=str(d_com)
           st.session_state['cap2']='1'
-          submited1=st.button("Introdu date despre beneficiar")
+          submited1=st.form_submit_button("Introdu date despre beneficiar")
       if submited1:
         with st.form('Date despre beneficiar si cererea depusa:'):
             st.text_area('Beneficiar',key='beneficiar')
