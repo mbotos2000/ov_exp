@@ -184,7 +184,7 @@ if st.session_state['file']!=None:
         st.write('Numai putin de:')
         st.selectbox(
             'Select a range number',
-            range(1, int(st.session_state['zimax_et'])),key='zimin_et')
+            range(1, int(tosi)),key='zimin_et')
         a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
     if a:
