@@ -216,36 +216,32 @@ if st.session_state['file']!=None:
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
         st.dataframe(df)
-        excel_data["CLIENT"] = df.iloc[1, 1]   # B2
-        excel_data["AMOUNT"] = int(df.iloc[2, 3])
-
+        schimba_val_ET(df.iloc[113, 8])
+        schimba_val_a_3d(df.iloc[115, 8])
+        schimba_val_a_rel(df.iloc[115, 9])
+        schimba_val_inc_nd(df.iloc[115, 8])
+        schimba_val_bet(df.iloc[118, 8])
+        schimba_val_et_actualizat(df.iloc[122, 4])
+        schimba_val_et_finisaje(df.iloc[121,4])
         st.success("Excel loaded")
 
   st.title("Generare oferta")
   st.write('{:%d-%b-%Y}'.format(date.today()))
-
-
-  with st.form('Fisa disciplinei pentru Facultatea de constructii'):
-    st.header('Capitolul 1: Date despre program')
+  with st.form('Oferta expertiza'):
+    st.header('Inregistrare cerere')
     submitted = st.form_submit_button("Treceti la alegerea specializarii")
     if submitted:
       st.text_area('Numar oferta',key='Nume_contract')
       d_com=st.date_input("Data ofertei",date.today())
       st.session_state['data_contract']=str(d_com)
-      st.text_area('Beneficiar',key='beneficiar')
-      st.text_area('Numar cerere pentru care se face oferta',key='cerere')
-
-
-
-      st.session_state['cap2']='1'
-
-     
+      st.session_state['cap2']='1'     
   if st.session_state['cap2']!=None:
-    with st.form('Alege specializarea:'):
-        
-            st.session_state['cap2']='2'
+    with st.form('Date despre beneficiar si cererea depusa:'):
+        st.text_area('Beneficiar',key='beneficiar')
+        st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+        st.session_state['cap2']='2'
   if st.session_state['cap2']=='2':
-    with st.form('capitolul 2 si 3'):
+    with st.form('1. Expretiza tehnica'):
 
         
 
