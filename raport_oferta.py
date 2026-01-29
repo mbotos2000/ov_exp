@@ -170,6 +170,8 @@ if st.session_state['file']!=None:
                 st.text_area('Beneficiar',key='beneficiar')
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
     if st.session_state.step >= 3:
+                st.write('1. Expertiză tehnică')
+                st.text_area('Valoare expertiza tehnica',value=str(df.iloc[113, 8]), key='ore_et')
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare verificare',key='tarif_et')           
                 st.selectbox(
@@ -181,12 +183,70 @@ if st.session_state['file']!=None:
                     range(1, 60),key='zimin_et')
     #a=st.button('Treci la capitolul 4')
     if st.session_state.step >= 4:
-              st.write('Capitolul 4')
+                st.write('2.Scanare 3D de înaltă precizie a construcției și elaborare releveu arhitectural al acesteia')
+                st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(df.iloc[113, 8]), key='val_a_3d')
+                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(df.iloc[113, 8]), key='val_a_rel')       
+                st.selectbox(
+                    'Durata de realizare a releveului: ',
+                    range(1, 60),key='zimax_a')
+                st.write('Numai putin de:')
+                st.selectbox(
+                    'Nu mai putin de: ',
+                    range(1, 60),key='zimin_a')
     if st.session_state.step >= 5:
-            st.write('Distribuția fondului de timp (ore pe semestru)')
-            #st.session_state['M_3_8']=str(data1['orestud'].loc[(data1['specializare']==st.session_state['M_1_6'])&(data1['nume_disciplina']==st.session_state['M_2_1']) & (data1['curs']=='CURS      ')].values[0])
-            tosi=38
-        
+                st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
+                st.text_area('3. Investigații prin încercări nedistructive : ',value=str(df.iloc[113, 8]), key='val_inc_nd')
+                st.selectbox(
+                    'Durata de realizare a releveului: ',
+                    range(1, 60),value=30, key='zimax_IND')
+                st.write('Numai putin de:')
+                st.selectbox(
+                    'Nu mai putin de: ',
+                    range(1, 60),value=25,key='zimin_IND')
+    if st.session_state.step >= 6:
+                st.write('4.	Teste pe betonul pus în operă prin extragere și testare carote ')
+                st.text_area('4.	Teste pe betonul pus în operă  : ',value=str(df.iloc[113, 8]), key='val_bet')
+    if st.session_state.step >= 7:
+                st.write('5.	Studiu Geotehnic și dezveliri la nivelul fundațiilor')
+                st.text_area(' Studiu Geotehnic : ',value=str(df.iloc[113, 8]), key='val_geo') 
+                st.text_area(' Dezveliri : ',value=str(df.iloc[113, 8]), key='val_dezveliri')
+                st.selectbox(
+                    'Numarul minim de dezveliri: ',
+                    range(1, 60),value=8, key='nr_dezveliri')
+                st.selectbox(
+                    'Durata de realizare a studiului geotehnic: ',
+                    range(1, 60),value=30, key='zimax_geo')
+                st.write('Numai putin de:')
+                st.selectbox(
+                    'Nu mai putin de: ',
+                    range(1, 60),value=25,key='zimin_geo')
+    if st.session_state.step >= 8:
+                st.text_area(' Realizare lucrări de decopertare finisaje interioare  : ',value=str(df.iloc[113, 8]), key='val_et_finisaje') 
+                st.text_area(' Elaborare releveu structural al construcției   : ',value=str(df.iloc[113, 8]), key='val_rel_struct') 
+                st.text_area(' Actualizare expertiză tehnică   : ',value=str(df.iloc[113, 8]), key='val_et_actualizat') 
+  
+                st.selectbox(
+                    'Durata de realizare a releveului structural este de maxim: ',
+                    range(1, 60),value=30, key='zimax_rel')
+                st.write('Numai putin de:')
+                st.selectbox(
+                    'Nu mai putin de: ',
+                    range(1, 60),value=25,key='zimin_rel')
+                
+                st.selectbox(
+                    'Durata de realizare a actualizării expertizei tehnice : ',
+                    range(1, 60),value=30, key='zimax_et_rel')
+                st.write('Numai putin de:')
+                st.selectbox(
+                    'Nu mai putin de: ',
+                    range(1, 60),value=25,key='zimin_et_rel')
+              st.selectbox(
+                    'Termen predare: ',
+                    range(1, 60),value=20, key='termen_predare')
+              st.selectbox(
+                    'Termen valabilitate',
+                    range(1, 60),value=8, key='termen_val')
+
     submitted = st.form_submit_button("Next")
 
  # Logic AFTER the form
@@ -207,100 +267,9 @@ if st.session_state['file']!=None:
     
         document = MailMerge(template)
         #st.write(document.get_merge_fields())
-        document.merge(da_cu=st.session_state['d_com'])
-        document.merge(M_8_2_14=st.session_state['M_8_2_14'])
-        document.merge(M_2_2_1=st.session_state['M_2_2_1'])
-        document.merge(M_8_2_1=st.session_state['M_8_2_1'])
-        document.merge(M_3_3_p=st.session_state['M_3_3_p'])
-        document.merge(M_8_1_14=st.session_state['M_8_1_14'])
-        document.merge(M_8_2_9=st.session_state['M_8_2_9'])
-        document.merge(M_8_1_o1=st.session_state['M_8_1_o1'])
-        document.merge(M_8_1_mp=st.session_state['M_8_1_mp'])
-        document.merge(M_8_1_mp1=st.session_state['M_8_1_mp1'])
-        document.merge(M_8_1_1=st.session_state['M_8_1_1'])
-        document.merge(M_3_3_s=st.session_state['M_3_3_s'])
-        document.merge(M_7_2=st.session_state['M_7_2'])
-        document.merge(data_dep=st.session_state['data_dep'])
-        document.merge(tip=st.session_state['tip'])
-        document.merge(dir_dep=st.session_state['dir_dep'])
-        document.merge(M_8_2_5=st.session_state['M_8_2_5'])
-        document.merge(M_3_7_e=st.session_state['M_3_7_e'])
-        document.merge(M_2_1=st.session_state['M_2_1'])
-        document.merge(M_10_2_c=st.session_state['M_10_2_c'])
-        document.merge(M_8_1_12=st.session_state['M_8_1_12'])
-        document.merge(M_1_2=st.session_state['M_1_2'])
-        document.merge(M_10_6=st.session_state['M_10_6'])
-        document.merge(M_9=st.session_state['M_9'])
-        document.merge(M_2_3=st.session_state['M_2_3'])
-        document.merge(M_10_3_a=st.session_state['M_10_3_a'])
-        document.merge(M_1_1=st.session_state['M_1_1'])
-        document.merge(M_8_1_13=st.session_state['M_8_1_13'])
-        document.merge(M_3_4=st.session_state['M_3_4'])
-        document.merge(M_3_3_l=st.session_state['M_3_3_l'])
-        document.merge(M_8_1_5=st.session_state['M_8_1_5'])
-        document.merge(M_8_2_6=st.session_state['M_8_2_6'])
-        document.merge(M_3_5=st.session_state['M_3_5'])
-        document.merge(M_4_2=st.session_state['M_4_2'])
-        document.merge(da_cu=st.session_state['da_cu'])
-        document.merge(M_8_2_7=st.session_state['M_8_2_7'])
-        document.merge(M_8_2_2=st.session_state['M_8_2_2'])
-        document.merge(M_8_2_8=st.session_state['M_8_2_8'])
-        document.merge(M_3_2=st.session_state['M_3_2'])
-        document.merge(M_10_3_c=st.session_state['M_10_3_c'])
-        document.merge(M_3_6_l=st.session_state['M_3_6_l'])
-        document.merge(M_1_8=st.session_state['M_1_8'])
-        document.merge(M_10_2_a=st.session_state['M_10_2_a'])
-        document.merge(decan=st.session_state['decan'])
-        document.merge(M_8_1_10=st.session_state['M_8_1_10'])
-        document.merge(Biblio_c=st.session_state['Biblio_c'])
-        document.merge(M_4_1=st.session_state['M_4_1'])
-        document.merge(M_7_1=st.session_state['M_7_1'])
-        document.merge(fac=st.session_state['fac'])
-        document.merge(M_3_7_f=st.session_state['M_3_7_f'])
-        document.merge(M_2_5=st.session_state['M_2_5'])
-        document.merge(M_8_1_8=st.session_state['M_8_1_8'])
-        document.merge(M_3_7_b=st.session_state['M_3_7_b'])
-        document.merge(M_3_7_a=st.session_state['M_3_7_a'])
-        document.merge(M_2_2=st.session_state['M_2_2'])
-        document.merge(M_5_2=st.session_state['M_5_2'])
-        document.merge(M_8_1_4=st.session_state['M_8_1_4'])
-        document.merge(M_2_7_1=st.session_state['M_2_7_1'])
-        document.merge(M_8_1_7=st.session_state['M_8_1_7'])
-        document.merge(M_8_2_3=st.session_state['M_8_2_3'])
-        document.merge(M_3_7_d=st.session_state['M_3_7_d'])
-        document.merge(M_8_2_12=st.session_state['M_8_2_12'])
-        document.merge(M_3_9=st.session_state['M_3_9'])
-        document.merge(M_3_7_c=st.session_state['M_3_7_c'])
-        document.merge(M_6_ct=st.session_state['M_6_ct'])
-        document.merge(M_8_1_2=st.session_state['M_8_1_2'])
-        document.merge(M_8_1_3=st.session_state['M_8_1_3'])
-        document.merge(dep=st.session_state['dep'])
-        document.merge(M_3_6_p=st.session_state['M_3_6_p'])
-        document.merge(M_10_1_a=st.session_state['M_10_1_a'])
-        document.merge(M_2_4=st.session_state['M_2_4'])
-        document.merge(M_2_6=st.session_state['M_2_6'])
-        document.merge(Biblio_a=st.session_state['Biblio_a'])
-        document.merge(data_fac=st.session_state['data_fac'])
-        document.merge(M_8_1_o=st.session_state['M_8_1_o'])
-        document.merge(M_1_6=st.session_state['M_1_6'])
-        document.merge(M_3_1=st.session_state['M_3_1'])
-        document.merge(M_6_cp=st.session_state['M_6_cp'])
-        document.merge(M_3_6_s=st.session_state['M_3_6_s'])
-        document.merge(M_1_4=st.session_state['M_1_4'])
-        document.merge(M_5_1=st.session_state['M_5_1'])
-        document.merge(M_8_1_6=st.session_state['M_8_1_6'])
-        document.merge(M_8_2_4=st.session_state['M_8_2_4'])
-        document.merge(M_8_2_13=st.session_state['M_8_2_13'])
-        document.merge(M_8_2_10=st.session_state['M_8_2_10'])
-        document.merge(M_2_7_2=st.session_state['M_2_7_2'])
-        document.merge(M_8_1_9=st.session_state['M_8_1_9'])
-        document.merge(M_1_3=st.session_state['M_1_3'])
-        document.merge(M_1_5=st.session_state['M_1_5'])
-        document.merge(M_8_1_11=st.session_state['M_8_1_11'])
-        document.merge(M_10_1_c=st.session_state['M_10_1_c'])
-        document.merge(M_3_8=st.session_state['M_3_8'])
-        document.merge(M_2_3_1=st.session_state['M_2_3_1'])
-        document.merge(M_3_11=st.session_state['M_3_11'])
+        if key in st.session_state:
+                    document.merge(**{key: st.session_state[key]})
+        
         #st.write(st.session_state)
         file_name=st.session_state['M_1_8']+'_FD_an'+st.session_state['M_2_4']+'_s'+st.session_state['M_2_5']+'_'+pres[st.session_state['M_1_6']]+'_'+st.session_state['M_2_1']+'_24-23.docx'
         #st.write(st.session_state['M_1_6'])
