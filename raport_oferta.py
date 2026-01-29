@@ -219,7 +219,7 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 8:
                 st.text_area(' Realizare lucrări de decopertare finisaje interioare  : ',value=str(format_eu_number(df.iloc[121, 8])), key='val_et_finisaje') 
                 st.text_area(' Elaborare releveu structural al construcției   : ',value=str(format_eu_number(df.iloc[116, 8])), key='val_rel_struct') 
-                st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 1])), key='val_et_actualizat') 
+                st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 4])), key='val_et_actualizat') 
                 schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
                 st.selectbox('Durata de realizare a releveului structural este de maxim: ',
                     range(1, 60),index=30, key='zimax_rel')
