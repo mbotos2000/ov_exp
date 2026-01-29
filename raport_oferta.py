@@ -284,10 +284,38 @@ if st.session_state['file']!=None:
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if st.session_state.step >= 9:	
       template=load_ftp_file()
-      keys_to_merge=['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et',
-					   'val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'val_bet','val_geo','nr_dezveliri',
-					   'val_et_finisaje','val_rel_struct','val_et_actualizat','termen_predare','termen_val','semnatura','zimax_et',
-					   'zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']
+      keys_to_merge=["val_inc_nd",
+    "nr_contract",
+    "data_contract",
+    "beneficiar",
+    "cerere",
+    "nume_contract",
+    "val_ET",
+    "ore_et",
+    "tarif_et",
+    "zimax_et",
+    "zimin_et",
+    "val_a_3d",
+    "val_a_rel",
+    "zimax_a",
+    "zimin_a",
+    "zimax_IND",
+    "zimin_IND",
+    "val_bet",
+    "val_geo",
+    "val_dezveliri",
+    "nr_dezveliri",
+    "zimax_geo",
+    "zimin_geo",
+    "val_et_finisaje",
+    "val_rel_struct",
+    "val_et_actualizat",
+    "zimin_rel",
+    "zimax_et_rel",
+    "termen_predare",
+    "termen_val",
+    "semnatura"]
+
       document=MailMerge(template)
         #st.write(document.get_merge_fields())
       for key in keys_to_merge:
