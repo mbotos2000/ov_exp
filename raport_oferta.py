@@ -186,8 +186,14 @@ def schimba_val_et_actualizat(new):
 def schimba_zimin_rel(new):
     st.session_state['zimin_rel'] = str(new)
 @st.cache_data
+def schimba_zimax_rel(new):
+    st.session_state['zimax_rel'] = str(new)
+@st.cache_data
 def schimba_zimax_et_rel(new):
     st.session_state['zimax_et_rel'] = str(new)
+@st.cache_data
+def schimba_zimin_et_rel(new):
+    st.session_state['zimin_et_rel'] = str(new)
 @st.cache_data
 def schimba_termen_predare(new):
     st.session_state['zimin_et_rel'] = str(new)
@@ -211,7 +217,7 @@ for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","nu
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura"]:
     st.session_state.setdefault(key, '')
 for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
-    "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel"]:
+    "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel"]:
     st.session_state.setdefault(key, int(60.0))
 keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
