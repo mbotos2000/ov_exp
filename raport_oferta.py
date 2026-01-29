@@ -163,20 +163,23 @@ if st.session_state['file']!=None:
     st.header('Inregistrare cerere')
     submitted = st.form_submit_button("Treceti la inregistrarea ofertei")
   if submitted:
+        with st.form('Oferta expertiza'):
           st.write('Oferta expertiza')
           st.text_area('Numar oferta',key='Nume_contract')
           d_com=st.date_input("Data ofertei",date.today())
           st.session_state['data_contract']=str(d_com)
           st.session_state['cap2']='1'
-          submited1=st.button("Introdu date despre beneficiar")
-  if st.session_state['cap2']!=None:
-            st.write('Date despre beneficiar si cererea depusa:')
-            st.text_area('Beneficiar',key='beneficiar')
-            st.text_area('Numar cerere pentru care se face oferta',key='cerere')
-            st.session_state['cap3']='2'
-            submited2=st.button("Introdu date expretiza tehnica")
-  if st.session_state['cap3']!=None:
-                st.write('1. Expretiza tehnica')
+          submited1=st.form_submit_button("Introdu date despre beneficiar")
+      
+        if submited1:
+            with st.form('Oferta expertiza'):
+                st.write('Date despre beneficiar si cererea depusa:')
+                st.text_area('Beneficiar',key='beneficiar')
+                st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+                st.session_state['cap3']='2'
+                submited2=st.form_submit_button("Introdu date expretiza tehnica")
+            if submited2:
+               with st.form('1. Expretiza tehnica')
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare verificare',key='tarif_et')
                 
@@ -188,9 +191,9 @@ if st.session_state['file']!=None:
                     'Nu mai putin de: ',
                     range(1, 60),key='zimin_et')
                 st.session_state['cap4']='1'
-                a=st.button("Treci mai departe")
+                a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
-  if st.session_state['cap4']!=None:
+             if a:
               st.write('Capitolul 4')
               schimba_zimax_et(tosi)
               schimba_zimin_et(slide_zimin_et)
