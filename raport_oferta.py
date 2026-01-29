@@ -191,7 +191,7 @@ if st.session_state['file']!=None:
       
       
       st.session_state['cap4']='1'
-            st.form_submit_button("Introdu date expretiza tehnica")
+    st.form_submit_button("Introdu date expretiza tehnica")
   if st.session_state['cap3']!=None:
     st.write('Distribuția fondului de timp (ore pe semestru)')
     #st.session_state['M_3_8']=str(data1['orestud'].loc[(data1['specializare']==st.session_state['M_1_6'])&(data1['nume_disciplina']==st.session_state['M_2_1']) & (data1['curs']=='CURS      ')].values[0])
