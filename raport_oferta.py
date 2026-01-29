@@ -179,12 +179,13 @@ if st.session_state['file']!=None:
         st.text_area('Numar ore necesar verificare',key='ore_et')
         st.text_area('Tarif verificare verificare',key='tarif_et')
         st.session_state['cap3']='1'
-        st.write('Distribuția fondului de timp (ore pe semestru)')
-        tosi=st.text_area('Durata maxima de realizare a expertizei',value=60,key='zimax_et')
+        st.selectbox(
+            'Durata de realizare a expertizei tehnice: ',
+            range(1, 60),key='zimax_et')
         st.write('Numai putin de:')
         st.selectbox(
-            'Select a range number',
-            range(1, int(tosi)),key='zimin_et')
+            'Nu mai putin de: ',
+            range(1, 60),key='zimin_et')
         a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
     if a:
