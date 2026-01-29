@@ -282,7 +282,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-     if st.session_state.step >= 9:	
+    if st.session_state.step >= 9:	
 	  template=load_ftp_file()
 
 	  keys_to_merge=['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et',
