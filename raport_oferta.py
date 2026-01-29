@@ -168,17 +168,19 @@ if st.session_state['file']!=None:
       st.session_state['data_contract']=str(d_com)
       st.session_state['cap2']='1'
       submited1=st.button("Introdu date despre beneficiar")
-  if st.session_state['cap2']!=None & submited1:
+  if submited1:
+    #st.session_state['cap2']!=None:
     with st.form('Date despre beneficiar si cererea depusa:'):
         st.text_area('Beneficiar',key='beneficiar')
         st.text_area('Numar cerere pentru care se face oferta',key='cerere')
-        st.session_state['cap2']='2'
+        st.session_state['cap3']='2'
         submited2=st.form_submit_button("Introdu date expretiza tehnica")
-  if st.session_state['cap2']=='2' & submited2 :
+  if submited2:
+    #st.session_state['cap3']=='2':
     with st.form('1. Expretiza tehnica'):
         st.text_area('Numar ore necesar verificare',key='ore_et')
         st.text_area('Tarif verificare verificare',key='tarif_et')
-        st.session_state['cap3']='1'
+        
         st.selectbox(
             'Durata de realizare a expertizei tehnice: ',
             range(1, 60),key='zimax_et')
@@ -186,6 +188,7 @@ if st.session_state['file']!=None:
         st.selectbox(
             'Nu mai putin de: ',
             range(1, 60),key='zimin_et')
+        st.session_state['cap3']='1'
         a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
     if a:
