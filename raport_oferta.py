@@ -126,7 +126,8 @@ def schimba_termen_val(new):
 def schimba_semnatura(new):
     st.session_state['semnatura'] = str(new)
 
-
+if "step" not in st.session_state:
+    st.session_state.step = 1
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
@@ -143,8 +144,6 @@ for key in keys_none:
 st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
         
 if st.session_state['file']!=None:
-  excel_data = {}
-
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
         st.dataframe(df)
@@ -161,25 +160,19 @@ if st.session_state['file']!=None:
   st.write('{:%d-%b-%Y}'.format(date.today()))
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
-    submitted = st.form_submit_button("Treceti la inregistrarea ofertei")
-  if submitted:
-        with st.form('Oferta expertiza'):
+    if st.session_state.step >= 1:
           st.write('Oferta expertiza')
           st.text_area('Numar oferta',key='Nume_contract')
           d_com=st.date_input("Data ofertei",date.today())
           st.session_state['data_contract']=str(d_com)
           st.session_state['cap2']='1'
-          submited1=st.form_submit_button("Introdu date despre beneficiar")
       
-        if submited1:
-            with st.form('Oferta expertiza'):
+    if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 st.text_area('Beneficiar',key='beneficiar')
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 st.session_state['cap3']='2'
-                submited2=st.form_submit_button("Introdu date expretiza tehnica")
-            if submited2:
-               with st.form('1. Expretiza tehnica')
+    if st.session_state.step >= 3:
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare verificare',key='tarif_et')
                 
@@ -191,78 +184,26 @@ if st.session_state['file']!=None:
                     'Nu mai putin de: ',
                     range(1, 60),key='zimin_et')
                 st.session_state['cap4']='1'
-                a=st.form_submit_button("Treci mai departe")
     #a=st.button('Treci la capitolul 4')
-             if a:
+    if st.session_state.step >= 4:
               st.write('Capitolul 4')
               schimba_zimax_et(tosi)
               schimba_zimin_et(slide_zimin_et)
               
               
               st.session_state['cap4']='1'
-  if st.session_state['cap4']!=None:
-    st.write('Distribuția fondului de timp (ore pe semestru)')
-    #st.session_state['M_3_8']=str(data1['orestud'].loc[(data1['specializare']==st.session_state['M_1_6'])&(data1['nume_disciplina']==st.session_state['M_2_1']) & (data1['curs']=='CURS      ')].values[0])
-    tosi=38
+    if st.session_state.step >= 5:
+            st.write('Distribuția fondului de timp (ore pe semestru)')
+            #st.session_state['M_3_8']=str(data1['orestud'].loc[(data1['specializare']==st.session_state['M_1_6'])&(data1['nume_disciplina']==st.session_state['M_2_1']) & (data1['curs']=='CURS      ')].values[0])
+            tosi=38
+        
+    submitted = st.form_submit_button("Next")
 
-    #st.write('Total ore studiu individual ', tosi)
+ # Logic AFTER the form
+ if submitted:
+    st.session_state.step += 1
 
-    slide_37a=0
-    slide_37b=0
-    slide_37c=0
-    slide_37d=0
-    slide_37e=0
-    slide_37f=0
-    st.write('Distribuția fondului de timp:')
-    slide_37a=st.slider(
-      '(a) Studiul după manual, suport de curs, bibliografie şi notițe',
-      min_value=0, max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-     
-      help='Completati de la a spre f. Suma orelor de studiu individual este blocata pe valoarea din planurile de invatamant')
-    slide_37b=st.slider(
-      '(b) Documentare suplimentară în bibliotecă, pe platforme electronice de specialitate şi pe teren',
-      min_value=0, max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-      
-      help='Completati de la a spre f. Suma orelor de studiu individual este blocata pe valoarea din planurile de invatamant')
-    slide_37c=st.slider(
-      'c) Pregătire seminarii / laboratoare, teme, referate, portofolii şi eseuri',
-      min_value=0, max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-      
-      help='Completati de la a spre f. Suma orelor de studiu individual este blocata pe valoarea din planurile de invatamant')
-    slide_37d=st.slider(
-      '(d) Tutoriat',
-      min_value=0, max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-      
-      help='Completati de la a spre f. Suma orelor de studiu individual este blocata pe valoarea din planurile de invatamant')
-    sd=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f))
-    slide_37e=st.slider(
-      'e) Examinări',
-      min_value=0, max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-      
-      help='Completati de la a spre f. Suma orelor de studiu individual este blocata pe valoarea din planurile de invatamant')
-    sd=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f))
-    if not(sd<=0):
-        slide_37f=st.slider(
-          '(f) Alte activități:',
-           max_value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-      
-          value=int(tosi-int(slide_37a)-int(slide_37b)-int(slide_37c)-int(slide_37d)-int(slide_37e)-int(slide_37f)),
-          help='Completati de la a spre f. Suma orelor de studiu individual este cea din planurile de invatamant')
-    else:
-            st.write('(f) Alte activități: 0 ore')
-            slide_37f=0
-            slide_37e+=-sd
-    a=st.button('Treci la capitolul 4')
-    if a:
-      st.write('Capitolul 4')
-      schimba_M_3_7_a(slide_37a)
-      schimba_M_3_7_b(slide_37b)
-      schimba_M_3_7_c(slide_37c)
-      schimba_M_3_7_d(slide_37d)
-      schimba_M_3_7_e(slide_37e)
-      schimba_M_3_7_f(slide_37f)
-      
-      st.session_state['cap4']='1'
+
     
 
   if st.session_state['cap4']!=None:
