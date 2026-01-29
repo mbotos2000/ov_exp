@@ -288,7 +288,7 @@ if st.session_state['file']!=None:
     "data_contract",
     "beneficiar",
     "cerere",
-    "nume_contract",
+    "numec",
     "val_ET",
     "ore_et",
     "tarif_et",
