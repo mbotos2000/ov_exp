@@ -132,6 +132,8 @@ st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
 for key in ['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et','val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'zimax_a' ,'zimin_a','zimax_IND','zimin_IND','val_bet','val_geo','nr_dezveliri','zimax_geo','zimin_geo' ,'val_et_finisaje','val_rel_struct','val_et_actualizat','zimin_rel','zimax_et_rel' ,'termen_predare','termen_val','semnatura']:
     st.session_state.setdefault(key, '')
+for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']:
+    st.session_state.setdefault(key, '60')
 keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
     st.session_state.setdefault(key, None)
@@ -172,10 +174,23 @@ if st.session_state['file']!=None:
         st.form_submit_button("Introdu date expretiza tehnica")
   if st.session_state['cap2']=='2' :
     with st.form('1. Expretiza tehnica'):
-
-        
-            st.session_state['cap3']='1'
- 
+        st.text_area('Numar ore necesar verificare',key='ore_et')
+        st.text_area('Tarif verificare verificare',key='tarif_et')
+        st.session_state['cap3']='1'
+        st.write('Distribuția fondului de timp (ore pe semestru)')
+        tosi=st.text_area('Durata maxima de realizare a expertizei',value='60',key='zimax_et')
+        st.write('Numai putin de:')
+        slide_zimin_et=st.slider(
+          'Durata de realizare a expertizei tehnice este de maxim ',
+          min_value=1, max_value=int(tosi)-1))
+    a=st.button('Treci la capitolul 4')
+    if a:
+      st.write('Capitolul 4')
+      schimba_zimax_et(tosi)
+      schimba_zimin_et(slide_zimin_et)
+      
+      
+      st.session_state['cap4']='1'
             st.form_submit_button("Introdu date expretiza tehnica")
   if st.session_state['cap3']!=None:
     st.write('Distribuția fondului de timp (ore pe semestru)')
