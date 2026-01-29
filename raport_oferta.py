@@ -210,7 +210,8 @@ for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","nu
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri",
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura"]:
     st.session_state.setdefault(key, '')
-for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimin_a','zimax_et_rel',"zimin_IND",'zimin_rel','zimax_rel','zimin_et_rel',]:
+for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
+    "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel"]:
     st.session_state.setdefault(key, int(60.0))
 keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
