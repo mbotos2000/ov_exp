@@ -251,7 +251,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_et')
     if st.session_state.step >= 4:
                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
-                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 9])), key='val_a_rel')       
+                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
                 st.selectbox('Durata de realizare a releveului: ',range(1, 60),key='zimax_a')
                 st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_a')
     if st.session_state.step >= 5:
