@@ -307,7 +307,7 @@ if st.session_state['file']!=None:
  # Logic AFTER the form
   if submitted:
     st.session_state.step += 1
-  template,_,_,_=load_ftp_file()
+  template=load_ftp_file()
   submitted= st.form_submit_button("finalizeaza")
   if submitted:
        
