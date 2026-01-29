@@ -318,6 +318,8 @@ if st.session_state['file']!=None:
     "val_et_actualizat",
     "zimin_rel",
     "zimax_et_rel",
+	"zimax_rel",
+    "zimin_et_rel",
     "termen_predare",
     "termen_val",
     "semnatura"]
