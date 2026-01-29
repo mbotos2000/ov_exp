@@ -241,8 +241,8 @@ if st.session_state['file']!=None:
                 #schimba_cerere(cerere)
     if st.session_state.step >= 3:
                 st.write('1. Expertiză tehnică')
-                a=st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
-                schimba_val_ET(format_eu_number(a))
+                st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
+                #schimba_val_ET(format_eu_number(a))
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare',key='tarif_et')           
                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),key='zimax_et')
