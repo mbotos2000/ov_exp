@@ -268,24 +268,18 @@ if st.session_state['file']!=None:
                 st.write('5. Studiu Geotehnic și dezveliri la nivelul fundațiilor')
                 st.text_area(' Studiu Geotehnic : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_geo') 
                 st.text_area(' Dezveliri : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_dezveliri')
-                st.selectbox('Numarul minim de dezveliri: ',
-                    range(1, 60),index=8, key='nr_dezveliri')
-                st.selectbox('Durata de realizare a studiului geotehnic: ',
-                    range(1, 60),index=30, key='zimax_geo')
+                st.selectbox('Numarul minim de dezveliri: ',range(1, 60),index=8, key='nr_dezveliri')
+                st.selectbox('Durata de realizare a studiului geotehnic: ',range(1, 60),index=30, key='zimax_geo')
                 st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),index=25,key='zimin_geo')
+                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_geo')
     if st.session_state.step >= 8:
-                st.text_area(' Realizare lucrări de decopertare finisaje interioare  : ',value=str(format_eu_number(df.iloc[121, 8])), key='val_et_finisaje') 
-                st.text_area(' Elaborare releveu structural al construcției   : ',value=str(format_eu_number(df.iloc[116, 8])), key='val_rel_struct') 
+                st.text_area(' Realizare lucrări de decopertare finisaje interioare : ',value=str(format_eu_number(df.iloc[121, 8])), key='val_et_finisaje') 
+                st.text_area(' Elaborare releveu structural al construcției : ',value=str(format_eu_number(df.iloc[116, 8])), key='val_rel_struct') 
                 st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 4])), key='val_et_actualizat') 
                 schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
                 st.selectbox('Durata de realizare a releveului structural este de maxim: ',range(1, 60),index=30, key='zimax_rel')
-                st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_rel')
-                
+                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_rel')          
                 st.selectbox('Durata de realizare a actualizării expertizei tehnice : ',range(1, 60),index=30, key='zimax_et_rel')
-                st.write('Numai putin de:')
                 st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
