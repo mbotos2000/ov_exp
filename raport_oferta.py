@@ -246,28 +246,21 @@ if st.session_state['file']!=None:
         
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare',key='tarif_et')           
-                st.selectbox('Durata de realizare a expertizei tehnice: ',
-                    range(1, 60),key='zimax_et')
+                st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),key='zimax_et')
                 st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),key='zimin_et')
+                st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_et')
     if st.session_state.step >= 4:
                 st.write('2.Scanare 3D de înaltă precizie a construcției și elaborare releveu arhitectural al acesteia')
                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                 #st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 9])), key='val_a_rel')       
-                st.selectbox('Durata de realizare a releveului: ',
-                    range(1, 60),key='zimax_a')
-                st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),key='zimin_a')
+                st.selectbox('Durata de realizare a releveului: ',range(1, 60),key='zimax_a')
+                st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_a')
     if st.session_state.step >= 5:
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
                 st.text_area('3. Investigații prin încercări nedistructive : ',value=str(format_eu_number(df.iloc[115, 8])), key='val_inc_nd')
-                st.selectbox('Durata de realizare a releveului: ',
-                    range(1, 60), index=25,key='zimax_IND')
+                st.selectbox('Durata de realizare a releveului: ',range(1, 60), index=25,key='zimax_IND')
                 st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),index=25,key='zimin_IND')
+                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_IND')
     if st.session_state.step >= 6:
                 st.write('4. Teste pe betonul pus în operă prin extragere și testare carote ')
                 st.text_area('4. Teste pe betonul pus în operă  : ',value=str(format_eu_number(df.iloc[118, 8])), key='val_bet')
@@ -287,21 +280,15 @@ if st.session_state['file']!=None:
                 st.text_area(' Elaborare releveu structural al construcției   : ',value=str(format_eu_number(df.iloc[116, 8])), key='val_rel_struct') 
                 st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 4])), key='val_et_actualizat') 
                 schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
-                st.selectbox('Durata de realizare a releveului structural este de maxim: ',
-                    range(1, 60),index=30, key='zimax_rel')
+                st.selectbox('Durata de realizare a releveului structural este de maxim: ',range(1, 60),index=30, key='zimax_rel')
                 st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),index=25,key='zimin_rel')
+                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_rel')
                 
-                st.selectbox('Durata de realizare a actualizării expertizei tehnice : ',
-                    range(1, 60),index=30, key='zimax_et_rel')
+                st.selectbox('Durata de realizare a actualizării expertizei tehnice : ',range(1, 60),index=30, key='zimax_et_rel')
                 st.write('Numai putin de:')
-                st.selectbox('Nu mai putin de: ',
-                    range(1, 60),index=25,key='zimin_et_rel')
-                st.selectbox('Termen predare: ',
-                    range(1, 60),index=20, key='termen_predare')
-                st.selectbox('Termen valabilitate',
-                    range(1, 60),index=8, key='termen_val')
+                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_et_rel')
+                st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     submitted = st.form_submit_button("Next")
 
  # Logic AFTER the form
