@@ -315,7 +315,7 @@ if st.session_state['file']!=None:
 					   'val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'val_bet','val_geo','nr_dezveliri',
 					   'val_et_finisaje','val_rel_struct','val_et_actualizat','termen_predare','termen_val','semnatura','zimax_et',
 					   'zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']
-        document = MailMerge(template)
+        document=MailMerge(template)
         #st.write(document.get_merge_fields())
         for key in keys_to_merge:
                     document.merge(**{key: st.session_state[key]})
