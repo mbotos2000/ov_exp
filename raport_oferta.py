@@ -235,10 +235,10 @@ if st.session_state['file']!=None:
           st.session_state['data_contract']=str(d_com)     
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
-                beneficiar=st.text_area('Beneficiar',key='beneficiar')
-                schimba_beneficiar(beneficiar)
-                cerere=st.text_area('Numar cerere pentru care se face oferta',key='cerere')
-                schimba_cerere(cerere)
+                #beneficiar=st.text_area('Beneficiar',key='beneficiar')
+                #schimba_beneficiar(beneficiar)
+				cerere=st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+                #schimba_cerere(cerere)
     if st.session_state.step >= 3:
                 st.write('1. Expertiză tehnică')
                 a=st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
@@ -251,7 +251,6 @@ if st.session_state['file']!=None:
                 st.write('Numai putin de:')
                 st.selectbox('Nu mai putin de: ',
                     range(1, 60),key='zimin_et')
-    #a=st.button('Treci la capitolul 4')
     if st.session_state.step >= 4:
                 st.write('2.Scanare 3D de înaltă precizie a construcției și elaborare releveu arhitectural al acesteia')
                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
