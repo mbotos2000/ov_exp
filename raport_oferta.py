@@ -285,7 +285,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Durata de realizare a releveului structural este de maxim: ',range(1, 60),index=30, key='zimax_rel')
                 st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_rel')          
                 st.selectbox('Durata de realizare a actualizării expertizei tehnice : ',range(1, 60),index=30, key='zimax_et_rel')
-                st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_et_rel')
+                st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et_rel'])-1),index=25,key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if st.session_state.step >= 9:	
