@@ -130,88 +130,11 @@ def schimba_semnatura(new):
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
-if 'val_inc_nd' not in st.session_state:
-    st.session_state['val_inc_nd']=''
-if 'nr_contract' not in st.session_state:
-    st.session_state['nr_contract']=''
-if 'data_contract' not in st.session_state:
-    st.session_state['data_contract']=''
-if 'beneficiar' not in st.session_state:
-    st.session_state['beneficiar']=''
-if 'cerere' not in st.session_state:
-    st.session_state['cerere']=''    
-if 'nume_contract' not in st.session_state:
-    st.session_state['nume_contract']=''                
-if 'ore_et' not in st.session_state:
-    st.session_state['ore_et']=''
-
-if 'val_ET' not in st.session_state:
-    st.session_state['val_ET']=''
-if 'tarif_et' not in st.session_state:
-    st.session_state['tarif_et']=''
-if 'zimax_et' not in st.session_state:
-    st.session_state['zimax_et']=''
-if 'zimin_et' not in st.session_state:
-    st.session_state['zimin_et']=''
-if 'val_a_3d' not in st.session_state:
-    st.session_state['val_a_3d']=''
-if 'val_a_rel' not in st.session_state:
-    st.session_state['val_a_rel']=''
-if 'zimax_a' not in st.session_state:
-    st.session_state['zimax_a']=''
-if 'zimin_a' not in st.session_state:
-    st.session_state['zimin_a']=''
-if 'zimax_IND' not in st.session_state:
-    st.session_state['zimax_IND']=''
-if 'zimin_IND' not in st.session_state:
-    st.session_state['zimin_IND']=''
-if 'val_bet' not in st.session_state:
-    st.session_state['val_bet']=''
-if 'val_geo' not in st.session_state:
-    st.session_state['val_geo']='-'
-
-if 'val_dezveliri' not in st.session_state:
-    st.session_state['val_dezveliri']='-'
-    
- 
-if 'nr_dezveliri' not in st.session_state:
-    st.session_state['nr_dezveliri']='-'
- 
-if 'zimax_geo' not in st.session_state:
-    st.session_state['zimax_geo']='-'
-
-if 'zimin_geo' not in st.session_state:
-    st.session_state['zimin_geo']='-'
-
-if 'val_et_finisaje' not in st.session_state:
-    st.session_state['val_et_finisaje']='-'
-
-if 'val_rel_struct' not in st.session_state:
-    st.session_state['val_rel_struct']='-'
- 
- 
-if 'val_et_actualizat' not in st.session_state:
-    st.session_state['val_et_actualizat']=''
-if 'zimin_rel' not in st.session_state:
-    st.session_state['zimin_rel']=''
-if 'zimax_et_rel' not in st.session_state:
-    st.session_state['zimax_et_rel']=''
-if 'zimin_et_rel' not in st.session_state:
-    st.session_state['zimin_et_rel']=''
-if 'termen_predare' not in st.session_state:
-    st.session_state['termen_predare']=''
-if 'termen_val' not in st.session_state:
-    st.session_state['termen_val']=''
-if 'semnatura' not in st.session_state:
-    st.session_state['semnatura']=''
-
-
-
-if 'file' not in st.session_state:
-    st.session_state['file']=None
-
-
-
+for key in ['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et','val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'zimax_a' ,'zimin_a','zimax_IND','zimin_IND','val_bet','val_geo','nr_dezveliri','zimax_geo','zimin_geo' ,'val_et_finisaje','val_rel_struct','val_et_actualizat','zimin_rel','zimax_et_rel' ,'termen_predare','termen_val','semnatura']:
+    st.session_state.setdefault(key, '')
+keys_none=['cap2','cap3','cap4','resetare' ,'file']
+for key in keys_none:
+    st.session_state.setdefault(key, None)
 
 st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
         
