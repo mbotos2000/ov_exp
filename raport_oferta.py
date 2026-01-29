@@ -27,10 +27,7 @@ def load_ftp_file():
     # Download DOCX templates
     docx_files = {}
     for filename in [
-        "template.docx", 
-        "template1.docx", 
-        "template2.docx",
-        "template3.docx"]:
+        "template.docx"]:
         file_data = BytesIO()
         ftp_server.retrbinary(f"RETR {filename}", file_data.write)
         file_data.seek(0)  # Reset file pointer to the start
@@ -41,10 +38,7 @@ def load_ftp_file():
 
     # Return downloaded files
     return ( 
-        docx_files["template.docx"], 
-        docx_files["template.docx1.docx"], 
-        docx_files["template.docx2.docx"], 
-        docx_files["template.docx3.docx"]   )
+        docx_files["template.docx"]  )
 # Use a session state flag to control cache invalidation
 
 if "refresh_data" not in st.session_state:
