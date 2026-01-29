@@ -105,8 +105,8 @@ def schimba_beneficiar(new):
 def schimba_cerere(new):
     st.session_state['cerere'] = str(new)
 @st.cache_data
-def schimba_nume_contract(new):
-    st.session_state['nume_contract'] = str(new)
+def schimba_numec(new):
+    st.session_state['numec'] = str(new)
 @st.cache_data
 def schimba_val_ET(new):
     st.session_state['val_ET'] = str(new)
@@ -206,11 +206,11 @@ if "step" not in st.session_state:
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
-for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","nume_contract","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
+for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","numec","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri",
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura"]:
     st.session_state.setdefault(key, '')
-for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']:
+for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimin_a','zimax_et_rel',"zimin_IND",'zimin_rel','zimax_rel','zimin_et_rel',]:
     st.session_state.setdefault(key, int(60.0))
 keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
@@ -230,18 +230,19 @@ if st.session_state['file']!=None:
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
           st.write('Oferta expertiza')
-          st.text_area('Numar oferta',key='Nume_contract')
+          st.text_area('Numar oferta',key='nr_contract')
           d_com=st.date_input("Data ofertei",date.today())
           st.session_state['data_contract']=str(d_com)     
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 st.text_area('Beneficiar',key='beneficiar')
+		        st.text_area('Denumire contract',key='numec')
                 #schimba_beneficiar(beneficiar)
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 #schimba_cerere(cerere)
     if st.session_state.step >= 3:
                 st.write('1. Expertiză tehnică')
-                st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
+                st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 #schimba_val_ET(format_eu_number(a))
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare',key='tarif_et')           
@@ -249,16 +250,14 @@ if st.session_state['file']!=None:
                 st.write('Numai putin de:')
                 st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_et')
     if st.session_state.step >= 4:
-                st.write('2.Scanare 3D de înaltă precizie a construcției și elaborare releveu arhitectural al acesteia')
                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
-                #st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 9])), key='val_a_rel')       
+                st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 9])), key='val_a_rel')       
                 st.selectbox('Durata de realizare a releveului: ',range(1, 60),key='zimax_a')
                 st.selectbox('Nu mai putin de: ',range(1, 60),key='zimin_a')
     if st.session_state.step >= 5:
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
                 st.text_area('3. Investigații prin încercări nedistructive : ',value=str(format_eu_number(df.iloc[115, 8])), key='val_inc_nd')
                 st.selectbox('Durata de realizare a releveului: ',range(1, 60), index=25,key='zimax_IND')
-                st.write('Numai putin de:')
                 st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_IND')
     if st.session_state.step >= 6:
                 st.write('4. Teste pe betonul pus în operă prin extragere și testare carote ')
@@ -266,7 +265,7 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 7:
                 st.write('5. Studiu Geotehnic și dezveliri la nivelul fundațiilor')
                 st.text_area(' Studiu Geotehnic : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_geo') 
-                st.text_area(' Dezveliri : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_dezveliri')
+                st.text_area(' Dezveliri : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_dezveliri')
                 st.selectbox('Numarul minim de dezveliri: ',range(1, 60),index=8, key='nr_dezveliri')
                 st.selectbox('Durata de realizare a studiului geotehnic: ',range(1, 60),index=30, key='zimax_geo')
                 st.write('Numai putin de:')
