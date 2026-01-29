@@ -215,7 +215,7 @@ if st.session_state['file']!=None:
 
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
-
+        st.dataframe(df)
         excel_data["CLIENT"] = df.iloc[1, 1]   # B2
         excel_data["AMOUNT"] = int(df.iloc[2, 3])
 
