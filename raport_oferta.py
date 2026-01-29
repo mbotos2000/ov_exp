@@ -302,7 +302,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Termen valabilitate',
                     range(1, 60),index=8, key='termen_val')
 
-  submitted = st.form_submit_button("Next")
+    submitted = st.form_submit_button("Next")
 
  # Logic AFTER the form
   if submitted:
