@@ -243,7 +243,6 @@ if st.session_state['file']!=None:
                 st.write('1. Expertiză tehnică')
                 a=st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_et')
                 schimba_val_ET(format_eu_number(a))
-        
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare',key='tarif_et')           
                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),key='zimax_et')
@@ -283,14 +282,9 @@ if st.session_state['file']!=None:
                 st.selectbox('Nu mai putin de: ',range(1, 60),index=25,key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-    submitted = st.form_submit_button("Next")
+     if st.session_state.step >= 9:	
+	  template=load_ftp_file()
 
- # Logic AFTER the form
-  if submitted:
-    st.session_state.step += 1
-  template=load_ftp_file()
-  submitted1= st.button("finalizeaza")
-  if submitted1:
 	  keys_to_merge=['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et',
 					   'val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'val_bet','val_geo','nr_dezveliri',
 					   'val_et_finisaje','val_rel_struct','val_et_actualizat','termen_predare','termen_val','semnatura','zimax_et',
@@ -301,8 +295,12 @@ if st.session_state['file']!=None:
                     document.merge(**{key: st.session_state[key]})
 	  document.write("oferta.docx")
 	  st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+    submitted = st.form_submit_button("Next")
 
-        #os.startfile(file_name)
+ # Logic AFTER the form
+  if submitted:
+    st.session_state.step += 1
+
         
 
 
