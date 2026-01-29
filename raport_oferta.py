@@ -133,7 +133,7 @@ st.set_page_config(layout="wide", initial_sidebar_state="auto")
 for key in ['val_inc_nd','nr_contract','nr_contract','data_contract','beneficiar','cerere','nume_contract','ore_et','val_ET','tarif_et','zimax_et' ,'zimin_et','val_a_3d' ,'val_a_rel', 'zimax_a' ,'zimin_a','zimax_IND','zimin_IND','val_bet','val_geo','nr_dezveliri','zimax_geo','zimin_geo' ,'val_et_finisaje','val_rel_struct','val_et_actualizat','zimin_rel','zimax_et_rel' ,'termen_predare','termen_val','semnatura']:
     st.session_state.setdefault(key, '')
 for key in ['zimax_et','zimax_a' ,'zimax_IND','zimax_geo','zimin_geo','zimax_et_rel']:
-    st.session_state.setdefault(key, '60')
+    st.session_state.setdefault(key, 60)
 keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
     st.session_state.setdefault(key, None)
