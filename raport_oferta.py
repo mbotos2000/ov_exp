@@ -159,7 +159,7 @@ if st.session_state['file']!=None:
 
   st.title("Generare oferta")
   st.write('{:%d-%b-%Y}'.format(date.today()))
-  with st.form('Oferta expertiza'):
+  with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     submitted = st.form_submit_button("Treceti la inregistrarea ofertei")
   if submitted:
