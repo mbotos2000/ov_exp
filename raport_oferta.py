@@ -140,7 +140,7 @@ keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
     st.session_state.setdefault(key, None)
 
-st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
+#st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
         
 if st.session_state['file']!=None:
   excel_data = {}
