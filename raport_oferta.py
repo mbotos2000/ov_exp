@@ -182,7 +182,7 @@ if st.session_state['file']!=None:
         st.write('Numai putin de:')
         slide_zimin_et=st.slider(
           'Durata de realizare a expertizei tehnice este de maxim ',
-          min_value=1, max_value=int(tosi)-1,value=int(int(tosi)/2))
+          min_value=1, max_value=int(tosi)-1,value=1)
     a=st.button('Treci la capitolul 4')
     if a:
       st.write('Capitolul 4')
