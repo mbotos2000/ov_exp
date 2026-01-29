@@ -200,7 +200,7 @@ if st.session_state['file']!=None:
     submitted = st.form_submit_button("Next")
 
  # Logic AFTER the form
- if submitted:
+  if submitted:
     st.session_state.step += 1
 
 
