@@ -236,7 +236,7 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 st.text_area('Beneficiar',key='beneficiar')
-		        st.text_area('Denumire contract',key='numec')
+                st.text_area('Denumire contract',key='numec')
                 #schimba_beneficiar(beneficiar)
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 #schimba_cerere(cerere)
