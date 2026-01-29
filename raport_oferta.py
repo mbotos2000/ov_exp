@@ -240,10 +240,10 @@ if st.session_state['file']!=None:
                 st.selectbox(
                     'Nu mai putin de: ',
                     range(1, 60),value=25,key='zimin_et_rel')
-              st.selectbox(
+                st.selectbox(
                     'Termen predare: ',
                     range(1, 60),value=20, key='termen_predare')
-              st.selectbox(
+                st.selectbox(
                     'Termen valabilitate',
                     range(1, 60),value=8, key='termen_val')
 
