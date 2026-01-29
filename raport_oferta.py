@@ -14,7 +14,9 @@ from difflib import get_close_matches
 import pickle
 import string
 
-
+@st.cache_data
+def schimba_val_inc_nd(new):
+    st.session_state['val_inc_nd'] = str(new)
 @st.cache_data
 def schimba_nr_contract(new):
     st.session_state['nr_contract'] = str(new)
@@ -127,6 +129,9 @@ def schimba_semnatura(new):
 
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
+
+if 'val_inc_nd' not in st.session_state:
+    st.session_state['val_inc_nd']=''
 if 'nr_contract' not in st.session_state:
     st.session_state['nr_contract']=''
 if 'data_contract' not in st.session_state:
