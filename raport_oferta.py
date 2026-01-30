@@ -236,11 +236,7 @@ if st.session_state['file']!=None:
   st.write('{:%d-%b-%Y}'.format(date.today()))
   optiuni = ["1.Expertiză tehnică ", "2.1.Scan 3D și generare nor de puncte ", "2.2.Elaborare releveu arhitectural al construcției ","3.Investigații prin încercări nedistructive",
 			"4.Teste pe betonul pus în operă","5.1 Studiu Geotehnic","5.2.Dezveliri la nivelul fundațiilor "]
-  chosen = st.multiselect(
-    "Ce capitole o sa contina ofertarea:",
-    optiuni,
-    help="If you select items here, those textboxes will be shown regardless of the current step."
-  )
+  chosen = st.multiselect("Ce capitole o sa contina ofertarea:",optiuni)
 
 
 
@@ -254,8 +250,14 @@ if st.session_state['file']!=None:
           st.session_state['data_contract']=str(d_com)     
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
-                st.text_area('Beneficiar',key='beneficiar')
-                st.text_area('Denumire contract',key='numec')
+                try:
+					st.text_area('Beneficiar',value=df.iloc[0, 0],key='beneficiar')
+				except:
+                	st.text_area('Beneficiar',key='beneficiar')
+				try:
+					st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
+				except:
+                	st.text_area('Denumire contract',key='numec')
                 #schimba_beneficiar(beneficiar)
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 #schimba_cerere(cerere)
