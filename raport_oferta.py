@@ -223,6 +223,7 @@ keys_none=['cap2','cap3','cap4','resetare' ,'file']
 for key in keys_none:
     st.session_state.setdefault(key, None)
 
+
 st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
         
 if st.session_state['file']!=None:
@@ -233,6 +234,17 @@ if st.session_state['file']!=None:
 
   st.title("Generare oferta")
   st.write('{:%d-%b-%Y}'.format(date.today()))
+  optiuni = ["1.Expertiză tehnică ", "2.1.Scan 3D și generare nor de puncte ", "2.2.Elaborare releveu arhitectural al construcției ","3.Investigații prin încercări nedistructive",
+			"4.Teste pe betonul pus în operă","5.1 Studiu Geotehnic","5.2.Dezveliri la nivelul fundațiilor "]
+  chosen = st.multiselect(
+    "Ce capitole o sa contina ofertarea:",
+    optiuni,
+    help="If you select items here, those textboxes will be shown regardless of the current step."
+  )
+
+
+
+
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
@@ -247,7 +259,7 @@ if st.session_state['file']!=None:
                 #schimba_beneficiar(beneficiar)
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 #schimba_cerere(cerere)
-    if st.session_state.step >= 3:
+    if (st.session_state.step >= 3) & ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
                 st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 #schimba_val_ET(format_eu_number(a))
