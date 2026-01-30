@@ -345,14 +345,10 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 10:	
       template=load_ftp_file()
       #st.session_state["val_dezv_8"]=str(format_eu_number(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", ".")))
-      #st.session_state["total1"]=str(format_eu_number(
-      st.write(float(st.session_state["val_ET"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_a_3d"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_a_rel"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_inc_nd"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_bet"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_geo"].replace(".", "").replace(",", ".")))
-      st.write(float(st.session_state["val_dezv_8"].replace(".", "").replace(",", ".")))
+      st.session_state["total1"]=str(float(st.session_state["val_ET"].replace(".", "").replace(",", "."))+float(st.session_state["val_a_3d"].replace(".", "").replace(",", "."))
+      float(st.session_state["val_a_rel"].replace(".", "").replace(",", "."))+ float(st.session_state["val_inc_nd"].replace(".", "").replace(",", "."))+
+      float(st.session_state["val_bet"].replace(".", "").replace(",", "."))+float(st.session_state["val_geo"].replace(".", "").replace(",", "."))+
+      float(st.session_state["val_dezv_8"].replace(".", "").replace(",", ".")))
 		
 
 
