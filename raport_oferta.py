@@ -351,7 +351,7 @@ if st.session_state['file']!=None:
 		float(st.session_state["val_inc_nd"].replace(".", "").replace(",", "."))+
 		float(st.session_state["val_bet"].replace(".", "").replace(",", "."))+
 		float(st.session_state["val_geo"].replace(".", "").replace(",", "."))+
-		float(st.session_state["val_dezv_8"].replace(".", "").replace(",", ".")))
+		float(st.session_state["val_dezv_8"].replace(".", "").replace(",", "."))))
 		
 
 
