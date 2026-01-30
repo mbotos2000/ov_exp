@@ -265,12 +265,12 @@ if st.session_state['file']!=None:
                 #schimba_val_ET(format_eu_number(a))
                 st.text_area('Numar ore necesar verificare',key='ore_et')
                 st.text_area('Tarif verificare',key='tarif_et')           
-                st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),key='zimax_et')
+                st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
     if st.session_state.step >= 4:
                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                 st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
-                st.selectbox('Durata de realizare a releveului: ',range(1, 60),key='zimax_a')
+                st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
     if st.session_state.step >= 5:
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
