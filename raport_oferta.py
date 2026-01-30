@@ -339,7 +339,7 @@ if st.session_state['file']!=None:
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et_rel'])-1),key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-	if st.session_state.step >= 9:
+    if st.session_state.step >= 9:
                 st.text_area(' Semneaza : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 
 
     if st.session_state.step >= 10:	
