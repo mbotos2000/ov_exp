@@ -344,8 +344,19 @@ if st.session_state['file']!=None:
 
     if st.session_state.step >= 10:	
       template=load_ftp_file()
-      st.session_state["val_dezv_8"]=str(format_eu_number(int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))))
-      st.write(st.session_state["val_dezv_8"])
+      st.session_state["val_dezv_8"]=str(format_eu_number(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", ".")))
+      float(st.session_state[].replace(".", "").replace(",", "."))
+		st.session_state["total1"]=str(format_eu_number(float(st.session_state["val_ET"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_a_3d"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_a_rel"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_inc_nd"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_bet"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_geo"].replace(".", "").replace(",", "."))+
+		float(st.session_state["val_dezv_8"].replace(".", "").replace(",", ".")))
+		
+
+
+		
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
                     "nr_contract","data_contract","beneficiar","cerere","numec",
                     "ore_et","tarif_et",
