@@ -229,17 +229,14 @@ st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", 
 if st.session_state['file']!=None:
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
-        st.dataframe(df)
-        st.success("Excel loaded")
+        #st.dataframe(df)
+        st.success("Datele au fost citite din fisierul excell!")
 
   st.title("Generare oferta")
   st.write('{:%d-%b-%Y}'.format(date.today()))
   optiuni = ["1.Expertiză tehnică ", "2.1.Scan 3D și generare nor de puncte ", "2.2.Elaborare releveu arhitectural al construcției ","3.Investigații prin încercări nedistructive",
 			"4.Teste pe betonul pus în operă","5.1 Studiu Geotehnic","5.2.Dezveliri la nivelul fundațiilor "]
   chosen = st.multiselect("Ce capitole o sa contina ofertarea:",optiuni)
-
-
-
 
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
