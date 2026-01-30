@@ -344,7 +344,7 @@ if st.session_state['file']!=None:
 
     if st.session_state.step >= 10:	
       template=load_ftp_file()
-      st.session_state["val_dezv_8"]=str(format_eu_number(int(st.session_state["nr_dezveliri"])*int(st.session_state["val_dezveliri"])))
+      st.session_state["val_dezv_8"]=str(format_eu_number(int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))))
       st.write(st.session_state["val_dezv_8"])
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
                     "nr_contract","data_contract","beneficiar","cerere","numec",
