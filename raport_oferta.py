@@ -251,13 +251,13 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 try:
-					st.text_area('Beneficiar',value=df.iloc[0, 0],key='beneficiar')
+                 st.text_area('Beneficiar',value=df.iloc[0, 0],key='beneficiar')
 				except:
-                	st.text_area('Beneficiar',key='beneficiar')
+                 st.text_area('Beneficiar',key='beneficiar')
 				try:
-					st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
+                 st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
 				except:
-                	st.text_area('Denumire contract',key='numec')
+                 st.text_area('Denumire contract',key='numec')
                 #schimba_beneficiar(beneficiar)
                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 #schimba_cerere(cerere)
