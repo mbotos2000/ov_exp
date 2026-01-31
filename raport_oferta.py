@@ -308,7 +308,8 @@ if st.session_state['file']!=None:
                  st.text_area('Numar cerere pentru care se face oferta',key='cerere')
                 
                 #schimba_cerere(cerere)
-    if (st.session_state.step >= 3) & ("1.Expertiză tehnică " in chosen):
+    if (st.session_state.step >= 3):
+		#& ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
