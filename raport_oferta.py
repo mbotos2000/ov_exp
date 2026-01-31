@@ -13,10 +13,12 @@ from mailmerge import MailMerge
 from difflib import get_close_matches
 import pickle
 import string
-# auth_simple.py
-import streamlit as st
+
 import hashlib
 import time
+
+from auth_simple import require_login
+
 
 def _hash(pwd: str) -> str:
     return hashlib.sha256(pwd.encode("utf-8")).hexdigest()
@@ -82,6 +84,9 @@ def load_ftp_file():
     return ( 
         docx_files["template.docx"]  )
 # Use a session state flag to control cache invalidation
+name, user = require_login("🔐 App Login")
+st.title("Dashboard")
+st.success(f"Welcome, {name}!")
 
 if "refresh_data" not in st.session_state:
     st.session_state.refresh_data = False
