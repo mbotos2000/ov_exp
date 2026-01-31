@@ -17,9 +17,6 @@ import string
 import hashlib
 import time
 
-from auth_simple import require_login
-
-
 def _hash(pwd: str) -> str:
     return hashlib.sha256(pwd.encode("utf-8")).hexdigest()
 
