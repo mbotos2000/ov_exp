@@ -288,8 +288,12 @@ if st.session_state['file']!=None:
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
-          st.write('Oferta expertiza')
+		st.write('Oferta expertiza')
+		c1,c2 =st.columns(2)
+		with c1:
+          
           st.text_area('Numar oferta',key='nr_contract')
+		with c2:
           d_com=st.date_input("Data ofertei",date.today())
           st.session_state['data_contract']=str(d_com)     
     if st.session_state.step >= 2:
