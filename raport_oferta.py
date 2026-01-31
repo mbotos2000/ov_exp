@@ -17,6 +17,9 @@ import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 
 names = ["Peter Parker", "Rebecca Miller"]
 usernames = ["pparker", "rmiller"]
+passwords = ["1234aa", "234bb"]
+hashed_passwords = stauth.Hasher(passwords).generate()
+"""
 ftp = ftplib.FTP_TLS("users.utcluj.ro")
 ftp.login(user=st.secrets['u'], passwd=st.secrets['p'])
 ftp.prot_p()
