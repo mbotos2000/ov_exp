@@ -327,26 +327,32 @@ if st.session_state['file']!=None:
                 
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
     if st.session_state.step >= 4:
-                
-                try:
-                 st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
-                except:
-                 st.text_area('2.1 Scan 3D și generare nor de puncte: ', key='val_a_3d')
-                try:
-                 st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
-                except:
-                 st.text_area('2.2 Elaborare releveu arhitectural al construcției : ', key='val_a_rel')       
-                
-                st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
-                st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
+                col1, col2, col3 = st.columns(3)
+
+                with col1:            
+                 try:
+                  st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
+                 except:
+                  st.text_area('2.1 Scan 3D și generare nor de puncte: ', key='val_a_3d')
+                 try:
+                  st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
+                 except:
+                  st.text_area('2.2 Elaborare releveu arhitectural al construcției : ', key='val_a_rel')       
+                with col2:            
+                 st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
+                with col3:            
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
+
+
     if st.session_state.step >= 5:
+		
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
                 try:
                  st.text_area('3. Investigații prin încercări nedistructive : ',value=str(format_eu_number(df.iloc[115, 8])), key='val_inc_nd') 
                 except:
                  st.text_area('3. Investigații prin încercări nedistructive : ', key='val_inc_nd')
                 
-                st.selectbox('Durata de realizare a releveului: ',range(1, 60), index=25,key='zimax_IND')
+                st.selectbox('Durata de realizare a incercarilor nedestructive: ',range(1, 60), index=25,key='zimax_IND')
                 st.selectbox('Nu mai putin de: ',range(1,int(st.session_state['zimax_IND'])-1),key='zimin_IND')
     if st.session_state.step >= 6:
                 st.write('4. Teste pe betonul pus în operă prin extragere și testare carote ')
