@@ -299,6 +299,10 @@ if st.session_state['file']!=None:
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 try:
+                 st.text_area('Numar cerere pentru care se face oferta',value=df.iloc[2, 0],key='cerere')
+                except:
+                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+                try:
                  st.text_area('Beneficiar',value=df.iloc[0, 0],key='beneficiar')
                 except:
                  st.text_area('Beneficiar',key='beneficiar')
@@ -306,10 +310,7 @@ if st.session_state['file']!=None:
                  st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
                 except:
                  st.text_area('Denumire contract',key='numec')
-                try:
-                 st.text_area('Numar cerere pentru care se face oferta',value=df.iloc[2, 0],key='cerere')
-                except:
-                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+
                 
                 #schimba_cerere(cerere)
     if (st.session_state.step >= 3):
@@ -392,7 +393,7 @@ if st.session_state['file']!=None:
                  st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 4])), key='val_et_actualizat') 
                 except:
                  st.text_area(' Actualizare expertiză tehnică   : ', key='val_et_actualizat') 
-                schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
+                #schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
                 st.selectbox('Durata de realizare a releveului structural este de maxim: ',range(1, 60),index=30, key='zimax_rel')
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_rel'])-1),index=25,key='zimin_rel')          
                 st.selectbox('Durata de realizare a actualizării expertizei tehnice : ',range(1, 60),index=30, key='zimax_et_rel')
