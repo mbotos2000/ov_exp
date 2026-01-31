@@ -317,14 +317,14 @@ if st.session_state['file']!=None:
                 
                 colA, colB = st.columns(2)
 
-               with colA:
+                with colA:
                 #schimba_val_ET(format_eu_number(a))
-                st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
-				st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
-               with colB:
-                st.text_area('Tarif verificare',value="375",key='tarif_et')           
+                 st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
+				 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+                with colB:
+                 st.text_area('Tarif verificare',value="375",key='tarif_et')           
                 
-                st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
     if st.session_state.step >= 4:
                 
                 try:
