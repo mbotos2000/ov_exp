@@ -320,7 +320,7 @@ if st.session_state['file']!=None:
                 with colA:
                 #schimba_val_ET(format_eu_number(a))
                  st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
-				 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+	             st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')           
                 
