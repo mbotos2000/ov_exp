@@ -5,4 +5,5 @@ pandas
 protobuf==3.20.0
 streamlit
 openpyxl
-streamlit_authenticator
+auth_simple
+
