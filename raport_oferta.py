@@ -272,7 +272,8 @@ for key in keys_none:
 
 
 st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
-st.session_state['cond']=st.button("Nu am oferta in excell!")
+if st.button("Nu am oferta in excell!"):
+	st.session_state['cond']=1
 if st.session_state['file']!=None or st.session_state['cond']!=None:
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
