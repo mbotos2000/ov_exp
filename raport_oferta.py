@@ -13,49 +13,45 @@ from mailmerge import MailMerge
 from difflib import get_close_matches
 import pickle
 import string
-import streamlit_authenticator as stauth  # pip install streamlit-authenticator
+# auth_simple.py
+import streamlit as st
+import hashlib
+import time
 
-names = ["Peter Parker"]
-usernames = ["pparker"]
-passwords = ["1234aa"]
-#hashed_passwords = stauth.Hasher(passwords).generate()
+def _hash(pwd: str) -> str:
+    return hashlib.sha256(pwd.encode("utf-8")).hexdigest()
 
-ftp = ftplib.FTP_TLS("users.utcluj.ro")
-ftp.login(user=st.secrets['u'], passwd=st.secrets['p'])
-ftp.prot_p()
-ftp.encoding = "utf-8"  # Force UTF-8 encoding
-ftp.cwd('./public_html')
-# load hashed passwords
-file_name = "hashed_pw.pkl"
-file_data = BytesIO()
-# Download the file from the FTP server
-try:
- ftp.retrbinary(f'RETR {file_name}', file_data.write)
- # Seek to the beginning of the BytesIO object
- file_data.seek(0)
-            
- # Load the dictionary from the .pkl file
- hashed_passwords = pickle.load(file_data)
-      
-# Close the BytesIO object
-#file_data.close()
-except:
-	hashed_passwords=[]
-# Close the FTP connection
-ftp.quit()
+def _get_users():
+    try:
+        return st.secrets["users"]
+    except Exception:
+        return {}
 
+def require_login(title="Login"):
+    st.title(title)
+    if "auth" not in st.session_state:
+        st.session_state.auth = {"ok": False, "user": None, "name": None, "time": None}
 
-#authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
- #   "sales_dashboard", "abcdef", cookie_expiry_days=30
-#								   )
+    if st.session_state.auth["ok"]:
+        with st.sidebar:
+            if st.button("Logout"):
+                st.session_state.auth = {"ok": False, "user": None, "name": None, "time": None}
+                st.rerun()
+        return st.session_state.auth["name"], st.session_state.auth["user"]
 
-#name, authentication_status, username = authenticator.login("Login", "main")
+    users = _get_users()
+    u = st.text_input("Username")
+    p = st.text_input("Password", type="password")
+    if st.button("Login"):
+        if u in users and _hash(p) == users[u]["hash"]:
+            st.session_state.auth = {"ok": True, "user": u, "name": users[u]["name"], "time": time.time()}
+            st.rerun()
+        else:
+            st.error("Invalid username or password")
+            st.stop()
 
-#if authentication_status == False:
- #   st.error("Username/password is incorrect")
+    st.stop()
 
-#if authentication_status == None:
- #   st.warning("Please enter your username and password")
 def float_to_eu(value: float) -> str:
     formatted = f"{value:,.2f}"
     return formatted.replace(",", "X").replace(".", ",").replace("X", ".")
