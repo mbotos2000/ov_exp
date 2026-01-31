@@ -15,9 +15,9 @@ import pickle
 import string
 import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 
-names = ["Peter Parker", "Rebecca Miller"]
-usernames = ["pparker", "rmiller"]
-passwords = ["1234aa", "234bb"]
+names = ["Peter Parker"]
+usernames = ["pparker"]
+passwords = ["1234aa"]
 hashed_passwords = stauth.Hasher(passwords).generate()
 
 ftp = ftplib.FTP_TLS("users.utcluj.ro")
