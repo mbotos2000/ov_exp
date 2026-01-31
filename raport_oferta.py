@@ -45,18 +45,17 @@ except:
 ftp.quit()
 
 
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
-    "sales_dashboard", "abcdef"#, 
-								#	cookie_expiry_days=30
+#authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
+ #   "sales_dashboard", "abcdef", cookie_expiry_days=30
 								   )
 
-name, authentication_status, username = authenticator.login("Login", "main")
+#name, authentication_status, username = authenticator.login("Login", "main")
 
-if authentication_status == False:
-    st.error("Username/password is incorrect")
+#if authentication_status == False:
+ #   st.error("Username/password is incorrect")
 
-if authentication_status == None:
-    st.warning("Please enter your username and password")
+#if authentication_status == None:
+ #   st.warning("Please enter your username and password")
 def float_to_eu(value: float) -> str:
     formatted = f"{value:,.2f}"
     return formatted.replace(",", "X").replace(".", ",").replace("X", ".")
