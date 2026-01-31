@@ -27,7 +27,7 @@ ftp.encoding = "utf-8"  # Force UTF-8 encoding
 ftp.cwd('./public_html')
 # load hashed passwords
 file_name = "hashed_pw.pkl"
-file_data = io.BytesIO()
+file_data = BytesIO()
 # Download the file from the FTP server
 try:
  ftp.retrbinary(f'RETR {file_name}', file_data.write)
