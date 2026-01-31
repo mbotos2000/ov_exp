@@ -18,7 +18,7 @@ import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 names = ["Peter Parker"]
 usernames = ["pparker"]
 passwords = ["1234aa"]
-hashed_passwords = stauth.Hasher(passwords).generate()
+#hashed_passwords = stauth.Hasher(passwords).generate()
 
 ftp = ftplib.FTP_TLS("users.utcluj.ro")
 ftp.login(user=st.secrets['u'], passwd=st.secrets['p'])
@@ -26,19 +26,21 @@ ftp.prot_p()
 ftp.encoding = "utf-8"  # Force UTF-8 encoding
 ftp.cwd('./public_html')
 # load hashed passwords
-#file_name = "hashed_pw.pkl"
-#file_data = io.BytesIO()
+file_name = "hashed_pw.pkl"
+file_data = io.BytesIO()
 # Download the file from the FTP server
-#ftp.retrbinary(f'RETR {file_name}', file_data.write)
-# Seek to the beginning of the BytesIO object
-#file_data.seek(0)
+try:
+ ftp.retrbinary(f'RETR {file_name}', file_data.write)
+ # Seek to the beginning of the BytesIO object
+ file_data.seek(0)
             
-# Load the dictionary from the .pkl file
-#hashed_passwords = pickle.load(file_data)
+ # Load the dictionary from the .pkl file
+ hashed_passwords = pickle.load(file_data)
       
 # Close the BytesIO object
 #file_data.close()
-
+except:
+	hashed_passwords=[]
 # Close the FTP connection
 ftp.quit()
 
