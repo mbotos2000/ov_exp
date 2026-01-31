@@ -13,7 +13,7 @@ from mailmerge import MailMerge
 from difflib import get_close_matches
 import pickle
 import string
-
+from auth_simple import require_login
 import hashlib
 import time
 
