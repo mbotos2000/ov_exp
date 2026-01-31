@@ -85,11 +85,11 @@ name, user = require_login("🔐 App Login")
 st.title("Dashboard")
 st.success(f"Welcome, {name}!")
 
-if "refresh_data" not in st.session_state:
-    st.session_state.refresh_data = False
+#if "refresh_data" not in st.session_state:
+ #   st.session_state.refresh_data = False
 
-if st.button("🔄 Refresh FTP Data (apasa doar daca nu s-a actualizat baza de date!!!)"):
-    st.session_state.refresh_data = True
+#if st.button("🔄 Refresh FTP Data (apasa doar daca nu s-a actualizat baza de date!!!)"):
+   # st.session_state.refresh_data = True
 def find_closest_match_index(word, word_list, cutoff=0.6):
     word = preprocess(word)
     word_list = [preprocess(w) for w in word_list]
@@ -273,7 +273,7 @@ for key in keys_none:
 
 st.session_state['file'] = st.file_uploader("Incarca centralizatorul in excel", type="xlsx")
         
-if st.session_state['file']!=None:
+if st.session_state['file']!=None or st.button("Nu am oferta in excell!"):
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
         #st.dataframe(df)
