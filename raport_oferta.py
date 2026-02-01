@@ -342,7 +342,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  try:
                   st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                  except:
-                  st.text_area('2.1 Scan 3D și generare nor de puncte: ',  value='0', value='0',key='val_a_3d')
+                  st.text_area('2.1 Scan 3D și generare nor de puncte: ',  value='0',key='val_a_3d')
                  try:
                   st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
                  except:
