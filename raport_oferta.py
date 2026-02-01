@@ -323,7 +323,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
-                 st.text_area('Valoare expertiza tehnica', value='0', key='val_ET')
+                 st.text_area('Valoare expertiza tehnica', value='0.0', key='val_ET')
                 
                 colA, colB = st.columns(2)
 
@@ -342,11 +342,11 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  try:
                   st.text_area('2.1 Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                  except:
-                  st.text_area('2.1 Scan 3D și generare nor de puncte: ',  value='0',key='val_a_3d')
+                  st.text_area('2.1 Scan 3D și generare nor de puncte: ',  value='0.0',key='val_a_3d')
                  try:
                   st.text_area('2.2 Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
                  except:
-                  st.text_area('2.2 Elaborare releveu arhitectural al construcției : ', value='0', key='val_a_rel')       
+                  st.text_area('2.2 Elaborare releveu arhitectural al construcției : ', value='0.0', key='val_a_rel')       
                 with col2:            
                  st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
                 with col3:            
@@ -359,7 +359,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area('3. Investigații prin încercări nedistructive : ',value=str(format_eu_number(df.iloc[115, 8])), key='val_inc_nd') 
                 except:
-                 st.text_area('3. Investigații prin încercări nedistructive : ', value='0',key='val_inc_nd')
+                 st.text_area('3. Investigații prin încercări nedistructive : ', value='0.0',key='val_inc_nd')
                 
                 st.selectbox('Durata de realizare a incercarilor nedestructive: ',range(1, 60), index=25,key='zimax_IND')
                 st.selectbox('Nu mai putin de: ',range(1,int(st.session_state['zimax_IND'])-1),key='zimin_IND')
@@ -368,14 +368,14 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area('4. Teste pe betonul pus în operă  : ',value=str(format_eu_number(df.iloc[118, 8])), key='val_bet')
                 except:
-                 st.text_area('4. Teste pe betonul pus în operă  : ',  value='0',key='val_bet')
+                 st.text_area('4. Teste pe betonul pus în operă  : ',  value='0.0',key='val_bet')
                 
     if st.session_state.step >= 7:
                 st.write('5. Studiu Geotehnic și dezveliri la nivelul fundațiilor')
                 try:
                  st.text_area(' Studiu Geotehnic : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_geo') 
                 except:
-                 st.text_area(' Studiu Geotehnic : ',  value='0', key='val_geo') 
+                 st.text_area(' Studiu Geotehnic : ',  value='0.0', key='val_geo') 
                 try:
                  st.text_area(' Dezveliri : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_dezveliri')
                 except:
@@ -388,15 +388,15 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area(' Realizare lucrări de decopertare finisaje interioare : ',value=str(format_eu_number(df.iloc[121, 8])), key='val_et_finisaje') 
                 except:
-                 st.text_area(' Realizare lucrări de decopertare finisaje interioare : ', value='0', key='val_et_finisaje') 
+                 st.text_area(' Realizare lucrări de decopertare finisaje interioare : ', value='0.0', key='val_et_finisaje') 
                 try:
                  st.text_area(' Elaborare releveu structural al construcției : ',value=str(format_eu_number(df.iloc[116, 8])), key='val_rel_struct') 
                 except:
-                 st.text_area(' Elaborare releveu structural al construcției : ', value='0',key='val_rel_struct')      
+                 st.text_area(' Elaborare releveu structural al construcției : ', value='0.0',key='val_rel_struct')      
                 try:
                  st.text_area(' Actualizare expertiză tehnică   : ',value=str(format_eu_number(df.iloc[122, 4])), key='val_et_actualizat') 
                 except:
-                 st.text_area(' Actualizare expertiză tehnică   : ',  value='0',key='val_et_actualizat') 
+                 st.text_area(' Actualizare expertiză tehnică   : ',  value='0.0',key='val_et_actualizat') 
                 #schimba_val_a_rel(format_eu_number(df.iloc[115, 9]))
                 st.selectbox('Durata de realizare a releveului structural este de maxim: ',range(1, 60),index=30, key='zimax_rel')
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_rel'])-1),index=25,key='zimin_rel')          
@@ -413,7 +413,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
       try:
        st.session_state["val_dezv_8"]=int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))
       except:
-       st.session_state["val_dezv_8"]='0'
+       st.session_state["val_dezv_8"]='0.0'
       st.session_state["total1"]=float(st.session_state["val_ET"].replace(".", "").replace(",", "."))+float(st.session_state["val_a_3d"].replace(".", "").replace(",", "."))+float(st.session_state["val_a_rel"].replace(".", "").replace(",", "."))+ float(st.session_state["val_inc_nd"].replace(".", "").replace(",", "."))+float(st.session_state["val_bet"].replace(".", "").replace(",", "."))+float(st.session_state["val_geo"].replace(".", "").replace(",", "."))+st.session_state["val_dezv_8"]
       st.session_state["total2"]=float(st.session_state["val_et_finisaje"].replace(".", "").replace(",", "."))+float(st.session_state["val_rel_struct"].replace(".", "").replace(",", "."))+float(st.session_state["val_et_actualizat"].replace(".", "").replace(",", "."))
       st.session_state["total"]=st.session_state["total1"]+st.session_state["total2"]
