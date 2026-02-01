@@ -415,8 +415,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
       except:
        st.session_state["val_dezv_8"]='0.0'
       #st.session_state["total1"]=float(st.session_state["val_ET"].replace(".", "").replace(",", "."))+float(st.session_state["val_a_3d"].replace(".", "").replace(",", "."))+float(st.session_state["val_a_rel"].replace(".", "").replace(",", "."))+ float(st.session_state["val_inc_nd"].replace(".", "").replace(",", "."))+float(st.session_state["val_bet"].replace(".", "").replace(",", "."))+float(st.session_state["val_geo"].replace(".", "").replace(",", "."))+st.session_state["val_dezv_8"]
-      st.session_state["total2"]=float(st.session_state["val_et_finisaje"].replace(".", "").replace(",", "."))+float(st.session_state["val_rel_struct"].replace(".", "").replace(",", "."))+float(st.session_state["val_et_actualizat"].replace(".", "").replace(",", "."))
-      st.session_state["total"]=st.session_state["total1"]+st.session_state["total2"]
+      #st.session_state["total2"]=float(st.session_state["val_et_finisaje"].replace(".", "").replace(",", "."))+float(st.session_state["val_rel_struct"].replace(".", "").replace(",", "."))+float(st.session_state["val_et_actualizat"].replace(".", "").replace(",", "."))
+      #st.session_state["total"]=st.session_state["total1"]+st.session_state["total2"]
       st.session_state["val_dezv_8"]=float_to_eu(st.session_state["val_dezv_8"])
       st.session_state["total1"]=float_to_eu(st.session_state["total1"])
       st.session_state["total2"]=float_to_eu(st.session_state["total2"])
