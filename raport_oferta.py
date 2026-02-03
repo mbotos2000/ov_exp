@@ -85,36 +85,7 @@ name, user = require_login("🔐 App Login")
 st.title("Dashboard")
 st.success(f"Welcome, {name}!")
 
-#if "refresh_data" not in st.session_state:
- #   st.session_state.refresh_data = False
 
-#if st.button("🔄 Refresh FTP Data (apasa doar daca nu s-a actualizat baza de date!!!)"):
-   # st.session_state.refresh_data = True
-def find_closest_match_index(word, word_list, cutoff=0.6):
-    word = preprocess(word)
-    word_list = [preprocess(w) for w in word_list]
-    
-    closest_matches = get_close_matches(word, word_list, n=1, cutoff=cutoff)
-    if closest_matches:
-        return word_list.index(closest_matches[0])
-    return 0
-	
-def clean_value(value):
-    if pd.isna(value):  # Replaces NaN or None with an empty string
-        return ''
-    elif isinstance(value, bool):  # Convert boolean values to strings
-        return str(value)
-    elif isinstance(value, (int, float, str)):  # Keep numbers and strings as they are
-        return value
-    else:
-        return 'Unknown object'  # Handle unrecognized objects by converting them to a string
-def fix_encoding(text):
-    if isinstance(text, str):
-        try:
-            return text.encode('latin1').decode('utf-8')  # Fix incorrectly decoded text
-        except UnicodeEncodeError:
-            return text  # Return text unchanged if no encoding issues
-    return text  # If it's not a string, return as is
 def get_binary_file_downloader_html(bin_file, file_label='File'):
     with open(bin_file, 'rb') as f:
         data = f.read()
