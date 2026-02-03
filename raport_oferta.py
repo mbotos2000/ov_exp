@@ -265,7 +265,7 @@ for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","nu
     st.session_state.setdefault(key, '')
 for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "val_et_finisaje","val_rel_struct","val_et_actualizat","total1","total2","total"]:
-    st.session_state.setdefault(key, '0')
+    st.session_state.setdefault(key, 0.0)
 for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
     "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel"]:
     st.session_state.setdefault(key, int(60.0))
