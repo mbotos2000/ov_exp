@@ -254,7 +254,38 @@ def schimba_semnatura(new):
 if "step" not in st.session_state:
     st.session_state.step = 1
 
-st.set_page_config(layout="wide", initial_sidebar_state="auto")
+#st.set_page_config(layout="wide", initial_sidebar_state="auto")
+
+st.set_page_config(
+    page_title="Modern Streamlit App",
+    page_icon="🧭",
+    layout="wide"
+)
+
+# ---------------------------
+# CSS – modern look
+# ---------------------------
+st.markdown("""
+<style>
+.block-container { padding-top: 1.2rem; }
+.card {
+    background: var(--secondary-background-color);
+    padding: 1.2rem 1.3rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+}
+.card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+.hr {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.04), rgba(0,0,0,0.15), rgba(0,0,0,0.04));
+    margin: 0.7rem 0 1rem 0;
+}
+</style>
+""", unsafe_allow_html=True)
 
 
 
