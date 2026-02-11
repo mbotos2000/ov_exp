@@ -89,7 +89,7 @@ def load_ftp_file():
 	"template3.docx",
 	"template4.docx",
 	"template5.docx",
-	"template.docx"]  )
+	"template6.docx"]  )
 # Use a session state flag to control cache invalidation
 name, user = require_login("🔐 App Login")
 st.title("Dashboard")
