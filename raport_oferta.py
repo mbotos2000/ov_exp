@@ -192,7 +192,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
-				st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
        if (st.session_state.step >= 3)&(option==optiuni[2]):
                 st.write('1. Expertiză tehnică')
                 try:
