@@ -166,7 +166,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
                 except:
                  st.text_area('Denumire contract',key='numec')
-				st.text_area(' Oferta va fi semnata de: : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
+                st.text_area(' Oferta va fi semnata de: : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
     if (st.session_state.step >= 3)&(option==optiuni[0]):
 		#& ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
