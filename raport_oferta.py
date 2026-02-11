@@ -67,19 +67,29 @@ def load_ftp_file():
     
     # Download DOCX templates
     docx_files = {}
-    for filename in [
-        "template.docx"]:
+    for filename in ["template.docx",
+	"Template oferta_Expertiză tehnica_general.docx",
+	"Template oferta_Expertiză tehnica_intrare in legalitate.docx",
+	"Template_Expertiza geo excavatie.docx",
+	"Template_Expertiza geo stabilitate.docx",
+	"Template_Expertize vecinatati.docx",
+	"Template_scan 3D.docx"]:
         file_data = BytesIO()
         ftp_server.retrbinary(f"RETR {filename}", file_data.write)
         file_data.seek(0)  # Reset file pointer to the start
         docx_files[filename] = file_data
-
     # Close FTP connection
     ftp_server.quit()
 
     # Return downloaded files
     return ( 
-        docx_files["template.docx"]  )
+        docx_files["template.docx",
+	"Template oferta_Expertiză tehnica_general.docx",
+	"Template oferta_Expertiză tehnica_intrare in legalitate.docx",
+	"Template_Expertiza geo excavatie.docx",
+	"Template_Expertiza geo stabilitate.docx",
+	"Template_Expertize vecinatati.docx",
+	"Template_scan 3D.docx"]  )
 # Use a session state flag to control cache invalidation
 name, user = require_login("🔐 App Login")
 st.title("Dashboard")
@@ -182,7 +192,20 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
-					
+if (st.session_state.step >= 3)&(option==optiuni[1]):
+		#& ("1.Expertiză tehnică " in chosen):
+                st.write('1. Expertiză tehnică')
+                try:
+                 st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
+                except:
+                 st.text_area('Valoare expertiza tehnica', value=0.0, key='val_ET')                
+                colA, colB = st.columns(2)
+                with colA:
+                 st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
+                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+                with colB:
+                 st.text_area('Tarif verificare',value="375",key='tarif_et')                         
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')					
     if (st.session_state.step >= 4) & (option==optiuni[0]):
                 col1, col2, col3 = st.columns(3)
                 with col1:            
