@@ -17,9 +17,6 @@ from auth_simple import require_login
 import hashlib
 import time
 
-def update_range():
-    st.session_state.zimin_et = 1
-
 def _hash(pwd: str) -> str:
     return hashlib.sha256(pwd.encode("utf-8")).hexdigest()
 
@@ -191,7 +188,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 colA, colB = st.columns(2)
                 with colA:
                  st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
-                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et',on_change=update_range)
+                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, range(1, st.session_state.zimax_et - 1)),key='zimin_et')
