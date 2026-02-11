@@ -140,6 +140,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 			 "5. Expertiză geotehnică exigența Af, privind stabilitatea amplasamentului",
 			 "6. Expertize tehnice de vecinătăți privind cerințele de proiectare, execuție și monitorizare a excavațiilor adânci",
 			 "7. Servicii de scanare laser – achiziție de date și generare a norului de puncte"]
+   option = st.selectbox("Ce oferta doresti sa completezi?",optiuni,index=None, placeholder="Selecteaza un tip de oferta")
+
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
@@ -165,7 +167,6 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
                 except:
                  st.text_area('Denumire contract',key='numec')
-                option = st.selectbox("Ce oferta doresti sa completezi?",optiuni,index=None, placeholder="Selecteaza un tip de oferta")
                 st.text_area(' Oferta va fi semnata de: : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
     if (st.session_state.step >= 3)&(option==optiuni[0]):
 		#& ("1.Expertiză tehnică " in chosen):
