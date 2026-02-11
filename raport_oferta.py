@@ -193,7 +193,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-       if (st.session_state.step >= 3)&(option==optiuni[2]):
+     if (st.session_state.step >= 3)&(option==optiuni[2]):
                 st.write('1. Expertiză tehnică')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
@@ -207,7 +207,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
 				st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-if (st.session_state.step >= 3)&(option==optiuni[1]):
+     if (st.session_state.step >= 3)&(option==optiuni[1]):
 		#& ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
                 try:
@@ -221,7 +221,7 @@ if (st.session_state.step >= 3)&(option==optiuni[1]):
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')	
-	    if (st.session_state.step >= 4) & (option==optiuni[0]):
+     if (st.session_state.step >= 4) & (option==optiuni[0]):
                 col1, col2, col3 = st.columns(3)
                 with col1:            
                  try:
