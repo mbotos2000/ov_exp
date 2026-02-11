@@ -317,7 +317,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     document.merge(**{key: st.session_state[key]})
       document.write("oferta.docx")
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
-	if (st.session_state.step >= 9)&(option==optiuni[0]):	
+    if (st.session_state.step >= 9)&(option==optiuni[0]):	
       template,_,_,_,_,_,_=load_ftp_file()	  
       try:
        st.session_state["val_dezv_8"]=int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))
