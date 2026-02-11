@@ -260,7 +260,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[6]):
                 st.write('Scanare laser')
-				st.text_area('Constructia si adresa: ', key='constructie&adresa')
+                st.text_area('Constructia si adresa: ', key='constructie&adresa')
                 col1, col2, col3 = st.columns(3)
                 with col1:
                  try:
