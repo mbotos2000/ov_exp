@@ -309,6 +309,62 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     document.merge(**{key: st.session_state[key]})
       document.write("oferta.docx")
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+    if (st.session_state.step >= 4)&(option==optiuni[3]):	
+      _,_,_,template,_,_,_=load_ftp_file()	  
+      keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
+                    "nr_contract","data_contract","beneficiar","cerere","numec",
+                    "ore_et","tarif_et",
+					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
+                     "termen_predare","termen_val","semnatura",
+					 "total1","total2","total", "adresant"]
+
+      document=MailMerge(template)
+      for key in keys_to_merge:
+                    document.merge(**{key: st.session_state[key]})
+      document.write("oferta.docx")
+      st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+    if (st.session_state.step >= 4)&(option==optiuni[4]):	
+      _,_,_,_,template,_,_=load_ftp_file()	  
+      keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
+                    "nr_contract","data_contract","beneficiar","cerere","numec",
+                    "ore_et","tarif_et",
+					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
+                     "termen_predare","termen_val","semnatura",
+					 "total1","total2","total", "adresant"]
+
+      document=MailMerge(template)
+      for key in keys_to_merge:
+                    document.merge(**{key: st.session_state[key]})
+      document.write("oferta.docx")
+      st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+	if (st.session_state.step >= 4)&(option==optiuni[5]):	
+      _,_,_,_,_,template,_=load_ftp_file()	  
+      keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
+                    "nr_contract","data_contract","beneficiar","cerere","numec",
+                    "ore_et","tarif_et",
+					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
+                     "termen_predare","termen_val","semnatura",
+					 "total1","total2","total", "adresant"]
+
+      document=MailMerge(template)
+      for key in keys_to_merge:
+                    document.merge(**{key: st.session_state[key]})
+      document.write("oferta.docx")
+      st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
+    if (st.session_state.step >= 4)&(option==optiuni[6]):	
+      _,_,_,_,_,_,template=load_ftp_file()	  
+      keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
+                    "nr_contract","data_contract","beneficiar","cerere","numec",
+                    "ore_et","tarif_et",
+					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
+                     "termen_predare","termen_val","semnatura",
+					 "total1","total2","total", "adresant"]
+
+      document=MailMerge(template)
+      for key in keys_to_merge:
+                    document.merge(**{key: st.session_state[key]})
+      document.write("oferta.docx")
+      st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
     if (st.session_state.step >= 9)&(option==optiuni[0]):	
       template,_,_,_,_,_,_=load_ftp_file()	  
       try:
