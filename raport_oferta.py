@@ -174,7 +174,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 except:
                  st.text_area('Denumire contract',key='numec')
                  #st.session_state['numec']=a+'\n'
-                d=st.selectbox("Oferta va fi semnata de:", ["Dr. ing. Ovidiu Prodan"], index=0, 
+                d=st.selectbox("Oferta va fi semnata de:", ["Dr. ing. Ovidiu Prodan"],
 							 placeholder="Selecteaza din lista sau adauga persoana care va semna oferta",accept_new_options=True)
                 st.session_state['semnatura']=d
                 #st.text_area(' Oferta va fi semnata de: ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
