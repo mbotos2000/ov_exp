@@ -73,7 +73,7 @@ def load_ftp_file():
 	"template3.docx",
 	"template4.docx",
 	"template5.docx",
-	"template.docx"]:
+	"template6.docx"]:
         file_data = BytesIO()
         ftp_server.retrbinary(f"RETR {filename}", file_data.write)
         file_data.seek(0)  # Reset file pointer to the start
