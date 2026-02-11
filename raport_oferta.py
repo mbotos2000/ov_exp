@@ -111,7 +111,7 @@ st.set_page_config(page_title="Exp_oferte",
 for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","numec","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura",
-		   "total1","total2","total"]:
+		   "total1","total2","total","adresant"]:
     st.session_state.setdefault(key, '')
 for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "val_et_finisaje","val_rel_struct","val_et_actualizat","total1","total2","total"]:
@@ -133,10 +133,14 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 
   st.title("Generare oferta")
   st.write('{:%d-%b-%Y}'.format(date.today()))
-  optiuni = ["1.Expertiză tehnică ", "2.1.Scan 3D și generare nor de puncte ", "2.2.Elaborare releveu arhitectural al construcției ","3.Investigații prin încercări nedistructive",
-			"4.Teste pe betonul pus în operă","5.1 Studiu Geotehnic","5.2.Dezveliri la nivelul fundațiilor "]
-  chosen = st.multiselect("Ce capitole o sa contina ofertarea:",optiuni)
-
+  optiuni = ["1.Expertiză tehnică completa", 
+			 "2.Expertiză tehnică exigența A1/A2 ",
+			 "3.Expertiză tehnică exigența A1/A2, privind intrarea în legalitate a lucrărilor executate",
+			 "4.Expertiză geotehnică exigența Af ",
+			 "5. Expertiză geotehnică exigența Af, privind stabilitatea amplasamentului",
+			 "6. Expertize tehnice de vecinătăți privind cerințele de proiectare, execuție și monitorizare a excavațiilor adânci",
+			 "7. Servicii de scanare laser – achiziție de date și generare a norului de puncte"]
+  option = st.selectbox("Ce oferta doresti sa completezi?",index=None, placeholder="Selecteaza un tip de oferta",optiuni)
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
@@ -151,9 +155,9 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
                 try:
-                 st.text_area('Numar cerere pentru care se face oferta',value=df.iloc[2, 0],key='cerere')
+                 st.text_area('Persoana careia ii este adresata oferta',value=df.iloc[2, 0],key='adresant')
                 except:
-                 st.text_area('Numar cerere pentru care se face oferta',key='cerere')
+                 st.text_area('Persoana careia ii este adresata oferta',key='adresant')
                 try:
                  st.text_area('Beneficiar',value=df.iloc[0, 0],key='beneficiar')
                 except:
@@ -162,8 +166,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
                 except:
                  st.text_area('Denumire contract',key='numec')
-					
-    if (st.session_state.step >= 3):
+				st.text_area(' Oferta va fi semnata de: : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
+    if (st.session_state.step >= 3)&(option==optiuni[0]):
 		#& ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
                 try:
@@ -178,7 +182,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
 					
-    if st.session_state.step >= 4:
+    if (st.session_state.step >= 4) & (option==optiuni[0]):
                 col1, col2, col3 = st.columns(3)
                 with col1:            
                  try:
@@ -194,7 +198,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 with col3:            
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
 					
-    if st.session_state.step >= 5:		
+    if (st.session_state.step >= 5) &(option==optiuni[0]):		
                 st.write('3. Investigații prin încercări nedistructive la elementele structurale în vederea determinării modului de alcătuire și armare ')
                 try:
                  st.text_area('3. Investigații prin încercări nedistructive : ',value=str(format_eu_number(df.iloc[115, 8])), key='val_inc_nd') 
@@ -203,14 +207,14 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Durata de realizare a incercarilor nedestructive: ',range(1, 60), index=25,key='zimax_IND')
                 st.selectbox('Nu mai putin de: ',range(1,int(st.session_state['zimax_IND'])-1),key='zimin_IND')
 		
-    if st.session_state.step >= 6:
+    if (st.session_state.step >= 6) &(option==optiuni[0]):
                 st.write('4. Teste pe betonul pus în operă prin extragere și testare carote ')
                 try:
                  st.text_area('4. Teste pe betonul pus în operă  : ',value=str(format_eu_number(df.iloc[118, 8])), key='val_bet')
                 except:
                  st.text_area('4. Teste pe betonul pus în operă  : ',  value=0.0,key='val_bet')
                 
-    if st.session_state.step >= 7:
+    if (st.session_state.step >= 7) &(option==optiuni[0]):
                 st.write('5. Studiu Geotehnic și dezveliri la nivelul fundațiilor')
                 try:
                  st.text_area(' Studiu Geotehnic : ',value=str(format_eu_number(df.iloc[119, 8])), key='val_geo') 
@@ -225,7 +229,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Durata de realizare a studiului geotehnic: ',range(1, 60),index=30, key='zimax_geo')
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_geo'])-1),key='zimin_geo')
 		
-    if st.session_state.step >= 8:
+    if (st.session_state.step >= 8) &(option==optiuni[0]):
                 try:
                  st.text_area(' Realizare lucrări de decopertare finisaje interioare : ',value=str(format_eu_number(df.iloc[121, 8])), key='val_et_finisaje') 
                 except:
@@ -244,11 +248,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et_rel'])-1),key='zimin_et_rel')
                 st.selectbox('Termen predare: ',range(1, 60),index=20, key='termen_predare')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-		
-    if st.session_state.step >= 9:
-                st.text_area(' Semneaza : ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 
 
-    if st.session_state.step >= 10:	
+    if (st.session_state.step >= 9)&(option==optiuni[0]):	
       template=load_ftp_file()	  
       try:
        st.session_state["val_dezv_8"]=int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))
@@ -267,7 +268,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "nr_dezveliri","val_dezv_8",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total"]
+					 "total1","total2","total", "adresant"]
 
       document=MailMerge(template)
       for key in keys_to_merge:
