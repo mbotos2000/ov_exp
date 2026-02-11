@@ -140,7 +140,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 			 "5. Expertiză geotehnică exigența Af, privind stabilitatea amplasamentului",
 			 "6. Expertize tehnice de vecinătăți privind cerințele de proiectare, execuție și monitorizare a excavațiilor adânci",
 			 "7. Servicii de scanare laser – achiziție de date și generare a norului de puncte"]
-  option = st.selectbox("Ce oferta doresti sa completezi?",index=None, placeholder="Selecteaza un tip de oferta",optiuni)
+  option = st.selectbox("Ce oferta doresti sa completezi?",optiuni,index=None, placeholder="Selecteaza un tip de oferta")
   with st.form('Inregistrare cerere'):
     st.header('Inregistrare cerere')
     if st.session_state.step >= 1:
