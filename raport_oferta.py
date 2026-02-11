@@ -191,7 +191,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
-                 st.selectbox('Nu mai putin de: ',range(1, range(1, st.session_state.zimax_et - 1)),key='zimin_et')
+                 st.selectbox('Nu mai putin de: ',range(1, 59),key='zimin_et')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[2]):
                 st.write('Expertiză tehnică pentru intrare in legalitate')
