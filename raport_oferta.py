@@ -274,7 +274,7 @@ if (st.session_state.step >= 3)&(option==optiuni[1]):
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
 
     if (st.session_state.step >= 9)&(option==optiuni[0]):	
-      template=load_ftp_file()	  
+      template,_,_,_,_,_,_=load_ftp_file()	  
       try:
        st.session_state["val_dezv_8"]=int(st.session_state["nr_dezveliri"])*float(st.session_state["val_dezveliri"].replace(".", "").replace(",", "."))
       except:
