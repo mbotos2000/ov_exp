@@ -188,7 +188,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[2]):
-                st.write('1. Expertiză tehnică')
+                st.write('Expertiză tehnică pentru intrare in legalitate')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -202,8 +202,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[1]):
-		#& ("1.Expertiză tehnică " in chosen):
-                st.write('1. Expertiză tehnică')
+                st.write('Expertiză tehnică')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -214,7 +213,66 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
                 with colB:
                  st.text_area('Tarif verificare',value="375",key='tarif_et')                         
-                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')	
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
+    if (st.session_state.step >= 3)&(option==optiuni[3]):
+                st.write('Expertiză geotehnica')
+                try:
+                 st.text_area('Valoare expertiza geotehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
+                except:
+                 st.text_area('Valoare expertiza geotehnica', value=0.0, key='val_ET')                
+                colA, colB = st.columns(2)
+                with colA:
+                 st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
+                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+                with colB:
+                 st.text_area('Tarif verificare',value="375",key='tarif_et')                         
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
+    if (st.session_state.step >= 3)&(option==optiuni[4]):
+                st.write('Expertiză geotehnica stabilitate')
+                try:
+                 st.text_area('Valoare expertiza geotehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
+                except:
+                 st.text_area('Valoare expertiza geotehnica', value=0.0, key='val_ET')                
+                colA, colB = st.columns(2)
+                with colA:
+                 st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
+                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+                with colB:
+                 st.text_area('Tarif verificare',value="375",key='tarif_et')                         
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
+    if (st.session_state.step >= 3)&(option==optiuni[5]):
+                st.write('Expertiză tehnica vecinatati')
+                try:
+                 st.text_area('Valoare expertiza vecinatati',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
+                except:
+                 st.text_area('Valoare expertiza vecinatati', value=0.0, key='val_ET')                
+                colA, colB = st.columns(2)
+                with colA:
+                 st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
+                 st.selectbox('Durata de realizare a expertizei tehnice: ',range(1, 60),index=25,key='zimax_et')
+                with colB:
+                 st.text_area('Tarif verificare',value="375",key='tarif_et')                         
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_et'])-1),key='zimin_et')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
+   if (st.session_state.step >= 3)&(option==optiuni[6]):
+                st.write('Scanare laser')
+                col1, col2, col3 = st.columns(3)
+                with col1:            
+                 try:
+                  st.text_area('Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
+                 except:
+                  st.text_area('Scan 3D și generare nor de puncte: ',  value=0.0,key='val_a_3d')
+                 try:
+                  st.text_area('Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
+                 except:
+                  st.text_area('Elaborare releveu arhitectural al construcției : ', value=0.0, key='val_a_rel')       
+                with col2:            
+                 st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
+                with col3:            
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')	
     if (st.session_state.step >= 4) & (option==optiuni[0]):
                 col1, col2, col3 = st.columns(3)
                 with col1:            
