@@ -284,7 +284,23 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
                 with col3:            
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
-                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')	
+                st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
+                
+				num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=0)
+				
+				inputs = []
+
+				for i in range(num_rows):
+				    col1, col2, col3, col4 = st.columns(4)
+				
+				    row = {}
+				    row["c1"] = col1.text_input(f"Row {i+1} - Col 1", key=f"{i}_1")
+				    row["c2"] = col2.text_input(f"Row {i+1} - Col 2", key=f"{i}_2")
+				    row["c3"] = col3.number_input(f"Row {i+1} - Col 3 (num)", key=f"{i}_3")
+				    row["c4"] = col4.text_input(f"Row {i+1} - Col 4", key=f"{i}_4")
+				
+				    inputs.append(row)
+
     if (st.session_state.step >= 4) & (option==optiuni[0]):
                 col1, col2, col3 = st.columns(3)
                 with col1:            
