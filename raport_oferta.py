@@ -280,6 +280,10 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                   st.text_area('Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                  except:
                   st.text_area('Scan 3D și generare nor de puncte: ',  value=0.0,key='val_a_3d')
+                with col2:            
+                 st.selectbox('Durata de realizare a norului de puncte: ',range(1, 60),index=25,key='zimax_a')
+                with col3:            
+                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
                 num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 5)),index=3)
                 inputs = []
