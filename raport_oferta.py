@@ -277,7 +277,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  except:
                   st.text_area('Scan 3D și generare nor de puncte: ',  value=0.0,key='val_a_3d')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-                num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=3)
+                num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 5)),index=3)
                 inputs = []
                 for i in range(num_rows):
                  col1, col2, col3, col4 = st.columns(4)
