@@ -124,7 +124,7 @@ for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","va
 for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
     "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel"]:
     st.session_state.setdefault(key, int(60.0))
-keys_none=['cap2','cap3','cap4','resetare' ,'file','cond']
+keys_none=['cap2','cap3','cap4','resetare' ,'file','cond',"1_1"]
 st.session_state["val_dezv_8"]="0.00"
 for key in keys_none:
     st.session_state.setdefault(key, None)
@@ -285,7 +285,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 with col3:            
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
-                num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=0)
+                num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=3)
                 inputs = []
                 for i in range(num_rows):
                  col1, col2, col3, col4 = st.columns(4)
@@ -432,7 +432,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     document.merge(**{key: st.session_state[key]})
       document.write("oferta.docx")
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
-    if (st.session_state.step >= 4)&(option==optiuni[6]):	
+    if (st.session_state.step >= 4)&(option==optiuni[6])&(st.session_state.1_1!=None):	
       _,_,_,_,_,_,template=load_ftp_file()	  
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
                     "nr_contract","data_contract","beneficiar","cerere","numec",
