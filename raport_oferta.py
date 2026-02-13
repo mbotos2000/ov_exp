@@ -107,7 +107,8 @@ def format_eu_number(value):
     return formatted
 if "step" not in st.session_state:
     st.session_state.step = 1
-
+if "cap3" not in st.session_state:
+    st.session_state.cap3 = 1
 st.set_page_config(page_title="Exp_oferte",
     page_icon="🧭",
     layout="wide")
