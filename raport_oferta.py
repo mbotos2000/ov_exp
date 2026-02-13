@@ -124,7 +124,7 @@ for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","va
 for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
     "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel"]:
     st.session_state.setdefault(key, int(60.0))
-keys_none=['cap2','cap3','cap4','resetare' ,'file','cond',"1_1"]
+keys_none=['cap2','cap3','cap4','resetare' ,'file','cond',"1_1","2_1","3_1","4_1","5_1"]
 st.session_state["val_dezv_8"]="0.00"
 for key in keys_none:
     st.session_state.setdefault(key, None)
