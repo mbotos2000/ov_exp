@@ -276,14 +276,6 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                   st.text_area('Scan 3D și generare nor de puncte: ',value=str(format_eu_number(df.iloc[115, 8])), key='val_a_3d')
                  except:
                   st.text_area('Scan 3D și generare nor de puncte: ',  value=0.0,key='val_a_3d')
-                 try:
-                  st.text_area('Elaborare releveu arhitectural al construcției : ',value=str(format_eu_number(df.iloc[113, 8])), key='val_a_rel')       
-                 except:
-                  st.text_area('Elaborare releveu arhitectural al construcției : ', value=0.0, key='val_a_rel')       
-                with col2:            
-                 st.selectbox('Durata de realizare a releveului: ',range(1, 60),index=25,key='zimax_a')
-                with col3:            
-                 st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
                 num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=3)
                 inputs = []
@@ -291,9 +283,9 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  col1, col2, col3, col4 = st.columns(4)
                  row = {}
                  row["c1"] = col1.text_input(f" 3.{i+1} Tip releveu", key=f"{i}_1")
-                 row["c2"] = col2.text_input(f"Cuvant cheie pentru nota de la 3.{i+1}", key=f"{i}_2")
-                 row["c3"] = col3.number_input(f"'Durata de realizare a cap 3.{i+1}", key=f"{i}_3")
-                 row["c4"] = col4.text_input(f"Nu mai putin de: ", key=f"{i}_4")
+                 row["c2"] = col2.text_input(f" Valoare realizare releveu 3.{i+1}", key=f"{i}_2")
+                 row["c3"] = col3.selectbox(f"'Durata de realizare a cap 3.{i+1}",range(1, 60), key=f"{i}_3")
+                 row["c4"] = col4.selectbox(f"Nu mai putin de: ",range(1, 60), key=f"{i}_4")
                  inputs.append(row)
 
     if (st.session_state.step >= 4) & (option==optiuni[0]):
