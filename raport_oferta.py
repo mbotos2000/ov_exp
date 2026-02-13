@@ -286,7 +286,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.selectbox('Nu mai putin de: ',range(1, int(st.session_state['zimax_a'])-1),key='zimin_a')
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
                 num_rows = st.selectbox("Selecteaza numarul de tipuri de releveu:", list(range(1, 11)),index=0)
-				inputs = []
+                inputs = []
                 for i in range(num_rows):
 					col1, col2, col3, col4 = st.columns(4)
 					row = {}
