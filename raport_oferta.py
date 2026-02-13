@@ -432,7 +432,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     document.merge(**{key: st.session_state[key]})
       document.write("oferta.docx")
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
-    if (st.session_state.step >= 4)&(option==optiuni[6])&(st.session_state.1_1!=None):	
+    if (st.session_state.step >= 4)&(option==optiuni[6])&(st.session_state['1_1']!=None):	
       _,_,_,_,_,_,template=load_ftp_file()	  
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
                     "nr_contract","data_contract","beneficiar","cerere","numec",
