@@ -110,9 +110,9 @@ if "step" not in st.session_state:
 if "cap3" not in st.session_state:
     st.session_state.cap3 = 1
 if "cap3i" not in st.session_state:
-    st.session_state.cap3i = '\n'
+    st.session_state.cap3i = '\n\n'
 if "note" not in st.session_state:
-    st.session_state.note = '\n'
+    st.session_state.note = '\n\n'
 st.set_page_config(page_title="Exp_oferte",
     page_icon="🧭",
     layout="wide")
@@ -436,8 +436,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
         r_c2=row["c2"]
         r_c3=str(row["c3"])
         r_c4=str(row["c4"])
-        st.session_state.cap3i+=f"3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n"
-        st.session_state.note+= f"		Termenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n"
+        st.session_state.cap3i+=f"3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n\n"
+        st.session_state.note+= f"Termenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n\n"
         
 
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
