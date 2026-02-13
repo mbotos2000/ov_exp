@@ -290,11 +290,10 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 for i in range(num_rows):
                  col1, col2, col3, col4 = st.columns(4)
                  row = {}
-                 row["c1"] = col1.text_input(f"Row {i+1} - Col 1", key=f"{i}_1")
-                 row["c2"] = col2.text_input(f"Row {i+1} - Col 2", key=f"{i}_2")
-                 row["c3"] = col3.number_input(f"Row {i+1} - Col 3 (num)", key=f"{i}_3")
-                 row["c4"] = col4.text_input(f"Row {i+1} - Col 4", key=f"{i}_4")
-
+                 row["c1"] = col1.text_input(f" 3.{i+1} Tip releveu", key=f"{i}_1")
+                 row["c2"] = col2.text_input(f"Cuvant cheie pentru nota de la 3.{i+1}", key=f"{i}_2")
+                 row["c3"] = col3.number_input(f"'Durata de realizare a cap 3.{i+1}", key=f"{i}_3")
+                 row["c4"] = col4.text_input(f"Nu mai putin de: ", key=f"{i}_4")
                  inputs.append(row)
 
     if (st.session_state.step >= 4) & (option==optiuni[0]):
