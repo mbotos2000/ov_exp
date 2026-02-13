@@ -109,6 +109,10 @@ if "step" not in st.session_state:
     st.session_state.step = 1
 if "cap3" not in st.session_state:
     st.session_state.cap3 = 1
+if "cap3i" not in st.session_state:
+    st.session_state.cap3i = '\n'
+if "note" not in st.session_state:
+    st.session_state.note = '\n'
 st.set_page_config(page_title="Exp_oferte",
     page_icon="🧭",
     layout="wide")
@@ -425,13 +429,23 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
       document.write("oferta.docx")
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
     if (st.session_state.step >= 4)&(option==optiuni[6])&(st.session_state['1_1']!=None):	
-      _,_,_,_,_,_,template=load_ftp_file()	  
+      _,_,_,_,_,_,template=load_ftp_file()
+
+      for idx, row in enumerate(inputs):
+		r_c1=row["c1"]
+		r_c2=row["c2"]
+		r_c3=str(row["c3"])
+		r_c4=stre(row["c4"])
+        st.session_state.cap3i+=f"3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n"
+		st.session_state.note+= f"Termenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n"
+        
+
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
                     "nr_contract","data_contract","beneficiar","cerere","numec",
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant","mobilizare","constructie&adresa"]
+					 "total1","total2","total", "adresant","mobilizare","constructie&adresa","cap3i","note"]
 
       document=MailMerge(template)
       for key in keys_to_merge:
