@@ -110,9 +110,9 @@ if "step" not in st.session_state:
 if "cap3" not in st.session_state:
     st.session_state.cap3 = 1
 if "cap3i" not in st.session_state:
-    st.session_state.cap3i = '\n\n'
+    st.session_state.cap3i = '\n'
 if "note" not in st.session_state:
-    st.session_state.note = '\n\n'
+    st.session_state.note = '\n'
 st.set_page_config(page_title="Exp_oferte",
     page_icon="🧭",
     layout="wide")
@@ -436,8 +436,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
         r_c2=row["c2"]
         r_c3=str(row["c3"])
         r_c4=str(row["c4"])
-        st.session_state.cap3i+=f"3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n\n"
-        st.session_state.note+= f"Termenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n\n"
+        st.session_state.cap3i+=f"3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n"
+        st.session_state.note+= f"Termenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n"
         
 
       keys_to_merge=["val_inc_nd","val_ET","val_bet","val_geo","val_dezveliri","val_a_3d","val_a_rel", "val_et_finisaje","val_rel_struct","val_et_actualizat",
@@ -451,6 +451,9 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
       for key in keys_to_merge:
                     document.merge(**{key: st.session_state[key]})
       document.write("oferta.docx")
+      for key in ["cap3i","note"]:
+                    st.session_state[key]="\n"
+	  
       st.markdown(get_binary_file_downloader_html("oferta.docx", 'Word document'), unsafe_allow_html=True)
     if (st.session_state.step >= 9)&(option==optiuni[0]):	
       template,_,_,_,_,_,_=load_ftp_file()	  
