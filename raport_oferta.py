@@ -110,9 +110,9 @@ if "step" not in st.session_state:
 if "cap3" not in st.session_state:
     st.session_state.cap3 = 1
 if "cap3i" not in st.session_state:
-    st.session_state.cap3i = '\n'
+    st.session_state.cap3i = ''
 if "note" not in st.session_state:
-    st.session_state.note = '\n'
+    st.session_state.note = ''
 st.set_page_config(page_title="Exp_oferte",
     page_icon="🧭",
     layout="wide")
