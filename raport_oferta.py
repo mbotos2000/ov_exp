@@ -120,7 +120,7 @@ st.set_page_config(page_title="Exp_oferte",
 for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","numec","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura",
-		   "total1","total2","total","adresant","mobilizare","constructie&adresa"]:
+		   "total1","total2","total","adresant","mobilizare","constructie&adresa","gen"]:
     st.session_state.setdefault(key, '')
 for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "val_et_finisaje","val_rel_struct","val_et_actualizat","total1","total2","total"]:
@@ -165,6 +165,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 			
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
+                g=st.selectbox("Domnului sau doamenei?",["d-nei","d-lui"])
+				st.session_state['gen']=g		
                 try:
                  st.text_area('Persoana careia ii este adresata oferta',value=df.iloc[2, 0],key='adresant')
                 except:
@@ -369,7 +371,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -383,7 +385,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -397,7 +399,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -411,7 +413,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -425,7 +427,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -449,7 +451,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant","mobilizare","constructie&adresa","cap3i","note"]
+					 "total1","total2","total", "adresant","mobilizare","constructie&adresa","cap3i","note",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -478,7 +480,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "nr_dezveliri","val_dezv_8",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant"]
+					 "total1","total2","total", "adresant",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
