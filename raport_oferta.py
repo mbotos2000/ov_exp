@@ -165,7 +165,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
 			
     if st.session_state.step >= 2:
                 st.write('Date despre beneficiar si cererea depusa:')
-                g=st.selectbox("Domnului sau doamenei?",["d-nei","d-lui"])
+                g=st.selectbox("Domnului sau doamenei?",["","d-nei","d-lui"])
                 st.session_state['gen']=g		
                 try:
                  st.text_area('Persoana careia ii este adresata oferta',value=df.iloc[2, 0],key='adresant')
