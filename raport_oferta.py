@@ -120,7 +120,7 @@ st.set_page_config(page_title="Exp_oferte",
 for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","numec","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura",
-		   "total1","total2","total","adresant","mobilizare","constructie&adresa","gen"]:
+		   "total1","total2","total","adresant","mobilizare","constructie&adresa","gen",'den_obiectiv']:
     st.session_state.setdefault(key, '')
 for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "val_et_finisaje","val_rel_struct","val_et_actualizat","total1","total2","total"]:
@@ -184,6 +184,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.session_state['semnatura']=d
     if (st.session_state.step >= 3)&(option==optiuni[0]):
                 st.write('1. Expertiză tehnică')
+				st.text_area('Denumire obiectiv pentru care se face expertiza', key='den_obiectiv')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -198,6 +199,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[2]):
                 st.write('Expertiză tehnică pentru intrare in legalitate')
+				st.text_area('Denumire obiectiv pentru care se face expertiza', key='den_obiectiv')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -367,7 +369,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant",'gen']
+					 "total1","total2","total", "adresant",'gen','den_obiectiv']
 
       document=MailMerge(template)
       for key in keys_to_merge:
@@ -381,7 +383,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant",'gen']
+					 "total1","total2","total", "adresant",'gen','den_obiectiv']
 
       document=MailMerge(template)
       for key in keys_to_merge:
