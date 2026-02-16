@@ -297,8 +297,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  row = {}
                  row["c1"] = col1.text_input(f" 3.{i+1} Tip releveu", key=f"{i}_1")
                  row["c2"] = col2.text_input(f" Valoare realizare releveu 3.{i+1}", key=f"{i}_2")
-                 row["c3"] = col3.selectbox(f"'Durata de realizare a cap 3.{i+1}",range(1, 60), key=f"{i}_3")
-                 row["c4"] = col4.selectbox(f"Nu mai putin de: ",range(1, 60), key=f"{i}_4")
+                 row["c3"] = col3.selectbox(f" Durata de realizare a cap 3.{i+1}",range(1, 60), key=f"{i}_3")
+                 row["c4"] = col4.selectbox(f" Nu mai putin de: ",range(1, 60), key=f"{i}_4")
                  inputs.append(row)
 
     if (st.session_state.step >= 4) & (option==optiuni[0]):
