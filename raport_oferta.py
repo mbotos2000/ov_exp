@@ -120,13 +120,13 @@ st.set_page_config(page_title="Exp_oferte",
 for key in ["val_inc_nd","nr_contract","data_contract","beneficiar","cerere","numec","val_ET","ore_et","tarif_et","zimax_et","zimin_et",
     "val_a_3d","val_a_rel","zimax_a","zimin_a","zimax_IND","zimin_IND","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "zimax_geo","zimin_geo","val_et_finisaje","val_rel_struct","val_et_actualizat","zimin_rel","zimax_et_rel","termen_predare","termen_val","semnatura",
-		   "total1","total2","total","adresant","mobilizare","constructie&adresa","gen",'den_obiectiv']:
+		   "total1","total2","total","adresant","mobilizare","constructie&adresa","gen",'den_obiectiv','adresa']:
     st.session_state.setdefault(key, '')
 for key in ["val_inc_nd","val_ET","val_a_3d","val_a_rel","val_bet","val_geo","val_dezveliri","nr_dezveliri","val_dezv_8"
     "val_et_finisaje","val_rel_struct","val_et_actualizat","total1","total2","total"]:
     st.session_state.setdefault(key, 0.0)
 for key in ["zimax_et","zimin_et","zimax_a","zimin_a",
-    "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel"]:
+    "zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_rel","zimin_et_rel","zimax_et_rel","nr_cladiri"]:
     st.session_state.setdefault(key, int(60.0))
 keys_none=['cap2','cap3','cap4','resetare' ,'file','cond',"1_1","2_1","3_1","4_1","5_1"]
 st.session_state["val_dezv_8"]="0.00"
@@ -256,6 +256,8 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[5]):
                 st.write('Expertiză tehnica vecinatati')
+                st.text_area('Adresa pentru expertixa', key='adresa')
+                st.selectbox('Numar cladiri din vecinatate pentru care se face expertiza: ',range(1, 10),key='nr_cladiri')
                 try:
                  st.text_area('Valoare expertiza vecinatati',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -426,7 +428,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant",'gen']
+					 "total1","total2","total", "adresant",'gen',"nr_cladiri","adresa"]
 
       document=MailMerge(template)
       for key in keys_to_merge:
