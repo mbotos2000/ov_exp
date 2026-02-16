@@ -445,7 +445,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
         r_c2=row["c2"]
         r_c3=str(row["c3"])
         r_c4=str(row["c4"])
-        st.session_state.cap3i+=f"\t3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n       "
+        st.session_state.cap3i+=f"\t3.{idx+1} Elaborare releveu {r_c1} - {r_c2} RON + TVA;\n      \t"
         st.session_state.note+= f"\tTermenul de elaborare pentru releveu {r_c1} este de maxim {r_c3} zile lucrătoare de la semnarea contractului și plata ratei 1, dar nu mai puțin de {r_c4} zile lucrătoare de la generarea norului de puncte.\n       "
         
 
