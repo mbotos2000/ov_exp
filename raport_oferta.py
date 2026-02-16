@@ -184,7 +184,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.session_state['semnatura']=d
     if (st.session_state.step >= 3)&(option==optiuni[0]):
                 st.write('1. Expertiză tehnică')
-				st.text_area('Denumire obiectiv pentru care se face expertiza', key='den_obiectiv')
+
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
@@ -214,6 +214,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 st.selectbox('Termen valabilitate',range(1, 60),index=8, key='termen_val')
     if (st.session_state.step >= 3)&(option==optiuni[1]):
                 st.write('Expertiză tehnică')
+                st.text_area('Denumire obiectiv pentru care se face expertiza', key='den_obiectiv')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
