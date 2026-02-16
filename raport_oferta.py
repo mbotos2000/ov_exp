@@ -138,7 +138,7 @@ if st.button("Nu am oferta in excell!"):
 if st.session_state['file']!=None or st.session_state['cond']!=None:
   if st.session_state['file']:
         df = pd.read_excel(st.session_state['file'], header=None)
-        #st.dataframe(df)
+        st.dataframe(df)
         st.success("Datele au fost citite din fisierul excell!")
 
   st.title("Generare oferta")
@@ -177,16 +177,12 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                  st.text_area('Beneficiar',key='beneficiar')
                 try:
                  st.text_area('Denumire contract',value=df.iloc[1, 0],key='numec')
-                 #st.session_state['numec']=a+'\n'
                 except:
                  st.text_area('Denumire contract',key='numec')
-                 #st.session_state['numec']=a+'\n'
                 d=st.selectbox("Oferta va fi semnata de:", ["Dr. ing. Ovidiu Prodan"],
 							 placeholder="Selecteaza din lista sau adauga persoana care va semna oferta",accept_new_options=True)
                 st.session_state['semnatura']=d
-                #st.text_area(' Oferta va fi semnata de: ',value="Dr. ing. Ovidiu Prodan", key='semnatura') 	
     if (st.session_state.step >= 3)&(option==optiuni[0]):
-		#& ("1.Expertiză tehnică " in chosen):
                 st.write('1. Expertiză tehnică')
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
@@ -219,7 +215,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area('Valoare expertiza tehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
-                 st.text_area('Valoare expertiza tehnica', value=0.0, key='val_ET')                
+                 st.text_area('Valoare expertiza tehnica', value="0.0", key='val_ET')                
                 colA, colB = st.columns(2)
                 with colA:
                  st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
@@ -232,7 +228,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                 try:
                  st.text_area('Valoare expertiza geotehnica',value=str(format_eu_number(df.iloc[113, 8])), key='val_ET')
                 except:
-                 st.text_area('Valoare expertiza geotehnica', value=0.0, key='val_ET')                
+                 st.text_area('Valoare expertiza geotehnica', value="0.0", key='val_ET')                
                 colA, colB = st.columns(2)
                 with colA:
                  st.text_area('Numar ore necesar verificare',value="8",key='ore_et')
