@@ -454,7 +454,7 @@ if st.session_state['file']!=None or st.session_state['cond']!=None:
                     "ore_et","tarif_et",
 					 "zimax_et","zimin_et","zimax_a","zimin_a","zimax_IND","zimin_IND","zimax_geo","zimin_geo","zimin_rel","zimax_et_rel","zimax_rel","zimin_et_rel",
                      "termen_predare","termen_val","semnatura",
-					 "total1","total2","total", "adresant","mobilizare","constructie&adresa","cap3i","note",'gen','den_obiectiv']
+					 "total1","total2","total", "adresant","mobilizare","constructie&adresa","cap3i","note",'gen']
 
       document=MailMerge(template)
       for key in keys_to_merge:
